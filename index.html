@@ -3,278 +3,409 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#090909">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#090807">
 <title>CIP Coffee Club</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090909;color:#f5eee0;font-family:Tahoma,Arial,sans-serif;overscroll-behavior:none}
-body{user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
-button{font:inherit;-webkit-tap-highlight-color:transparent;outline:none}
-button:focus,button:focus-visible{outline:none}
-#app{width:100%;height:100dvh;max-width:480px;margin:auto;padding:env(safe-area-inset-top,0px) 16px env(safe-area-inset-bottom,0px);display:flex;flex-direction:column;justify-content:space-evenly;gap:7px;overflow:hidden}
-.top{text-align:center;flex-shrink:0}
-.brand{font-size:clamp(18px,5vw,25px);font-weight:900;letter-spacing:3px;color:#e3c078}
-.sub{font-size:9px;letter-spacing:3px;color:#938264;margin-top:3px}
-.profile{display:flex;align-items:center;gap:9px;padding:8px 10px;border-bottom:1px solid #493a21;min-width:0}
-.avatar{width:38px;height:38px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;border:1px solid #b99a55;background:linear-gradient(145deg,#282116,#0b0b0b);color:#e3c078;font-size:17px;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.identity{min-width:0;flex:1}
-.playername{font-size:13px;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f5eee0}
-.playerid{font-size:10px;color:#b49a65;margin-top:4px;direction:ltr;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.levelbox{flex-shrink:0;text-align:center;border-right:1px solid #42341e;padding-right:12px}
-.levelnum{font-size:22px;font-weight:bold;color:#e3c078;line-height:1.1}
-.levelcaption{font-size:9px;color:#aa9671;margin-top:4px}
-.stats{border:1px solid #342a1b;border-radius:15px;background:linear-gradient(145deg,#181510,#101010);padding:11px 13px;flex-shrink:0}
-.statline{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#b9ad97}
-.day{color:#e3c078;border:1px solid #65502e;border-radius:20px;padding:4px 9px;white-space:nowrap}
-.score{text-align:center;font-size:clamp(34px,10vw,46px);font-weight:900;color:#e3c078;line-height:1.25;margin:5px 0}
-.progress{height:5px;background:#352d20;border-radius:9px;overflow:hidden;margin-top:8px}
-.bar{height:100%;width:0;background:linear-gradient(90deg,#967039,#f1d795);transition:width .15s}
-.goal{text-align:center;font-size:10px;color:#cbb27d;margin-top:7px}
-.play{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
-.character-title{font-size:11px;color:#a99a7c;text-align:center}
-.character{width:100%;min-height:0;flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:visible}
-.bean-button{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:130px;max-height:300px;background:transparent;border:0;padding:0;margin:0;cursor:pointer;touch-action:manipulation;appearance:none;-webkit-appearance:none;outline:none}
-.bean-button:focus,.bean-button:active{outline:none;box-shadow:none}
-.beans,.sacks{display:flex;align-items:center;justify-content:center;gap:clamp(5px,2vw,10px);flex-wrap:wrap;max-width:100%;pointer-events:none}
-.bean{position:relative;width:clamp(37px,11vw,51px);height:clamp(54px,16vw,72px);border-radius:53% 47% 49% 51% / 45% 44% 56% 55%;transform:rotate(34deg);background:radial-gradient(ellipse at 28% 20%,#8b5a30,#59351f 28%,#352016 60%,#160f0b 100%);border:1px solid #9c7040;box-shadow:inset 4px 4px 8px #d3a16b25,inset -5px -7px 10px #000b,0 5px 9px #0008}
-.bean:after{content:"";position:absolute;top:5%;left:47%;width:4px;height:90%;border-radius:50%;background:linear-gradient(90deg,#120d09,#bc8c4a 48%,#24150c);clip-path:polygon(45% 0,100% 8%,58% 20%,85% 32%,50% 44%,80% 57%,45% 69%,65% 82%,40% 100%,0 96%,27% 80%,5% 66%,32% 53%,8% 39%,40% 24%,20% 12%)}
-.sacks{gap:5px}
-.sack{width:clamp(42px,12vw,64px);height:clamp(67px,20vw,91px);position:relative;border:1px solid #b18a4b;border-radius:10px 10px 7px 7px;background:repeating-linear-gradient(90deg,#634328 0,#634328 3px,#795333 4px,#50351f 7px);box-shadow:inset 0 0 12px #1b0e05,0 6px 12px #0008;display:flex;align-items:center;justify-content:center;clip-path:polygon(9% 7%,25% 12%,75% 12%,91% 7%,100% 100%,0 100%)}
-.sack:before{content:"";position:absolute;top:8px;left:6px;right:6px;height:4px;background:#c6a56b;border-radius:3px}
-.sack-label{position:relative;width:85%;padding:5px 0;border-top:1px solid #d7b56d;border-bottom:1px solid #d7b56d;background:#17120d;text-align:center;color:#e6c477;font-size:10px;font-weight:bold;line-height:1.5}
-.sack-label small{display:block;font-size:6px;letter-spacing:1px}
-.tap{font-size:12px;font-weight:bold;color:#e3c078;text-align:center;margin-top:4px}
-.hint{font-size:10px;color:#9e927d;text-align:center;margin-top:5px;min-height:15px}
-.stages{display:flex;align-items:center;justify-content:center;gap:4px;flex-shrink:0}
-.stage{height:4px;flex:1;max-width:34px;border-radius:9px;background:#352d20}
-.stage.on{background:#c6a15b}
-.footer{text-align:center;font-size:9px;color:#726957;padding-bottom:3px;flex-shrink:0}
-.particle{position:absolute;z-index:5;width:8px;height:12px;border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 30% 20%,#98633a,#382016 65%,#160f0b);border:1px solid #9d7445;pointer-events:none;animation:scatter .36s ease-out forwards}
-@keyframes scatter{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.8)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.3)}}
-@media(max-height:650px){#app{gap:3px;padding-top:3px;padding-bottom:3px}.brand{font-size:18px}.avatar{width:32px;height:32px}.stats{padding:7px 11px}.score{font-size:32px;margin:2px 0}.bean-button{min-height:90px}.tap{font-size:11px}.hint{margin-top:2px}.footer{font-size:8px}}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090807;color:#f5ead5;font-family:Tahoma,Arial,sans-serif;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+button,input{font:inherit}
+button{outline:none;-webkit-tap-highlight-color:transparent}
+#app{width:100%;max-width:460px;height:100vh;height:100dvh;margin:auto;padding:env(safe-area-inset-top,6px) 17px env(safe-area-inset-bottom,6px);display:flex;flex-direction:column;gap:10px;overflow:hidden}
+header{text-align:center;flex-shrink:0;padding:4px 0}
+.brand{font-size:24px;font-weight:900;letter-spacing:4px;color:#e4c17b;text-shadow:0 0 20px #b58b4330}
+.subtitle{font-size:9px;letter-spacing:4px;color:#88734e;margin-top:4px}
+.profile{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.avatar{width:42px;height:42px;border:1px solid #a8884d;border-radius:50%;background:linear-gradient(145deg,#332718,#100e0b);display:grid;place-items:center;color:#e4c17b;flex-shrink:0;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.identity{flex:1;min-width:0}
+.name{font-weight:bold;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uid{font-size:10px;color:#b49a68;direction:ltr;text-align:right;margin-top:4px;overflow:hidden;text-overflow:ellipsis}
+.level{border-right:1px solid #44351e;padding-right:12px;text-align:center;flex-shrink:0}
+.level b{display:block;font-size:24px;color:#e4c17b}
+.level small{font-size:9px;color:#a79778}
+.stats{background:linear-gradient(145deg,#1b1812,#100f0c);padding:10px 12px;border-radius:13px;flex-shrink:0}
+.statline{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#c7b89b}
+.day{color:#e4c17b}
+.score{text-align:center;font-size:38px;line-height:1.3;font-weight:900;color:#e4c17b;margin:3px 0}
+.progress{height:4px;border-radius:10px;background:#3b3020;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#8f6933,#f6df9f);transition:width .2s}
+.goal{text-align:center;font-size:10px;color:#b9a477;margin-top:7px}
+main{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
+.page{display:none;flex:1;min-height:0;flex-direction:column;gap:12px;overflow:auto;scrollbar-width:none}
+.page.active{display:flex}
+.playtop{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#aa9670;flex-shrink:0}
+.rank{color:#e4c17b}
+.taparea{position:relative;flex:1;min-height:150px;display:flex;align-items:center;justify-content:center;border:0;background:transparent;padding:0;overflow:hidden;touch-action:manipulation}
+.bean{position:relative;width:clamp(130px,39vw,175px);height:clamp(180px,54vw,235px);border-radius:53% 47% 49% 51%/45% 44% 56% 55%;transform:rotate(36deg);background:radial-gradient(ellipse at 28% 17%,#b17b49 0%,#89552e 14%,#5b341e 38%,#321c10 68%,#100906 100%);border:1px solid #a57540;box-shadow:inset 10px 9px 19px #edc18b25,inset -14px -17px 25px #000d,0 22px 28px #0009,0 0 24px #a77a3320;pointer-events:none;transition:transform .08s}
+.bean:before{content:"";position:absolute;inset:6% 43% 6% 46%;border-radius:50%;background:linear-gradient(90deg,#170c06,#c09053 34%,#29170c 67%,#0c0704);clip-path:polygon(55% 0,85% 8%,40% 16%,72% 24%,29% 34%,72% 44%,32% 54%,74% 64%,28% 75%,63% 85%,34% 100%,0 94%,25% 82%,0 70%,30% 59%,0 48%,33% 37%,5% 26%,40% 15%)}
+.bean:after{content:"";position:absolute;inset:4%;border-radius:inherit;background:linear-gradient(130deg,#fff2,transparent 30%,transparent 70%,#0005)}
+.taparea:active .bean{transform:rotate(36deg) scale(.96)}
+.sacks{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;padding:10px;max-width:100%}
+.sack{position:relative;width:clamp(54px,16vw,75px);height:clamp(82px,25vw,110px);border:1px solid #b28a4b;border-radius:9px 9px 6px 6px;background:repeating-linear-gradient(90deg,#57371f 0,#57371f 3px,#805533 4px,#50321e 7px);box-shadow:inset 0 0 13px #1b0e05,0 8px 14px #0007;display:flex;align-items:center;justify-content:center;clip-path:polygon(9% 7%,25% 12%,75% 12%,91% 7%,100% 100%,0 100%)}
+.sack:before{content:"";position:absolute;top:9px;left:7px;right:7px;height:4px;background:#d0ad6a;border-radius:3px}
+.sacklabel{width:86%;position:relative;padding:6px 0;background:#17110b;border-block:1px solid #d7b56d;text-align:center;color:#e6c477;font-size:11px;font-weight:bold}
+.sacklabel small{display:block;font-size:7px;letter-spacing:1px}
+.particle{position:absolute;width:7px;height:11px;border:1px solid #9b7040;border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 30% 20%,#b07a43,#4a2b18 65%,#160e09);z-index:5;pointer-events:none;animation:scatter .45s ease-out forwards}
+@keyframes scatter{to{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.25)}}
+.rainbean{position:fixed;top:-30px;z-index:99;width:12px;height:18px;border:1px solid #a77a42;border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 30% 20%,#b98145,#4a2916 70%,#100805);box-shadow:inset 2px 2px 3px #e7bb7020;pointer-events:none;animation:rainfall 3s linear forwards}
+@keyframes rainfall{0%{transform:translateY(-25px) rotate(0deg);opacity:0}8%{opacity:1}100%{transform:translateY(110vh) rotate(680deg);opacity:.85}}
+.panel{background:linear-gradient(145deg,#1a1711,#100f0c);border:1px solid #352b1d;border-radius:15px;padding:14px}
+.paneltitle{font-weight:bold;color:#e4c17b;font-size:14px;margin-bottom:10px}
+.muted{font-size:11px;color:#ad9d80;line-height:1.9}
+.btn{border:1px solid #b18a4b;background:linear-gradient(135deg,#d5b575,#a47b3c);color:#171009;border-radius:10px;padding:12px;font-size:12px;font-weight:bold;width:100%;cursor:pointer}
+.btn.secondary{background:#1a1711;color:#e4c17b;border-color:#594526}
+.inviterow{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #33291b}
+.inviterow:last-child{border-bottom:0}
+.smallavatar{width:34px;height:34px;border-radius:50%;border:1px solid #977641;background:#2a2115;color:#e4c17b;display:grid;place-items:center;flex-shrink:0}
+.inviterow .details{flex:1;min-width:0}
+.inviterow .details b{font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.inviterow .details small{display:block;font-size:10px;color:#b49a68;margin-top:4px;direction:ltr;text-align:right}
+.inviterow .details em{display:block;font-size:10px;color:#a99a7f;margin-top:4px;font-style:normal}
+.nav{display:flex;gap:8px;flex-shrink:0;padding-bottom:2px}
+.nav button{flex:1;border:1px solid #382d1d;background:#14120e;color:#a9956d;border-radius:12px;padding:11px 5px;font-size:11px}
+.nav button.active{border-color:#c19c56;color:#e4c17b;background:#251d11}
+.overlay{position:fixed;inset:0;z-index:200;background:#000e;display:none;align-items:center;justify-content:center;padding:22px}
+.overlay.show{display:flex}
+.dialog{width:100%;max-width:350px;background:#17140f;border:1px solid #8f6e37;border-radius:17px;padding:20px;text-align:center}
+.dialog h3{color:#e4c17b;margin:0 0 10px;font-size:18px}
+.dialog p{font-size:12px;color:#b8a98d;line-height:1.9}
+.dialog input{width:100%;background:#090807;color:#f5ead5;border:1px solid #6d532b;border-radius:10px;padding:12px;margin:7px 0 12px;outline:none}
+.note{text-align:center;font-size:9px;color:#786a50;line-height:1.7;padding:2px 0}
+@media(max-height:680px){#app{gap:6px}header{padding:0}.brand{font-size:20px}.profile .avatar{width:35px;height:35px}.stats{padding:6px 10px}.score{font-size:30px}.bean{width:115px;height:155px}.nav button{padding:8px 5px}.panel{padding:10px}}
 </style>
 </head>
 <body>
-<main id="app">
-  <header class="top">
-    <div class="brand">CIP COFFEE</div>
-    <div class="sub">COFFEE CLUB</div>
-  </header>
+<div id="app">
+<header>
+  <div class="brand">CIP COFFEE</div>
+  <div class="subtitle">RUSH CLUB</div>
+</header>
 
-  <section class="profile">
-    <div class="avatar" id="avatar">☕</div>
-    <div class="identity">
-      <div class="playername" id="playerName">بازیکن CIP</div>
-      <div class="playerid" id="playerId">در حال شناسایی حساب تلگرام...</div>
-    </div>
-    <div class="levelbox">
-      <div class="levelnum" id="level">۱</div>
-      <div class="levelcaption">LEVEL</div>
-    </div>
+<section class="profile">
+  <div class="avatar" id="avatar">☕</div>
+  <div class="identity">
+    <div class="name" id="playerName">بازیکن CIP</div>
+    <div class="uid" id="playerId">Telegram ID: --</div>
+  </div>
+  <div class="level"><b id="levelNum">1</b><small>لول بازیکن</small></div>
+</section>
+
+<section class="stats">
+  <div class="statline"><span id="dayLabel">روز فعالیت ۱</span><span class="day" id="sackLabel">دانه قهوه</span></div>
+  <div class="score" id="score">0</div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <div class="goal" id="goal">هدف امروز: ۵۰۰ دانه</div>
+</section>
+
+<main>
+  <section class="page active" id="gamePage">
+    <div class="playtop"><span>☕ روی دانه ضربه بزن</span><span class="rank" id="characterLabel">CIP ROAST</span></div>
+    <button class="taparea" id="tapArea" aria-label="ضربه برای جمع‌آوری دانه قهوه">
+      <div class="bean" id="bean"></div>
+    </button>
+    <div class="note" id="gameMessage">هر ضربه، یک دانه قهوه؛ هدف روزانه‌ات را کامل کن.</div>
   </section>
 
-  <section class="stats">
-    <div class="statline">
-      <span>☕ دانه‌های امروز</span>
-      <span class="day" id="dayLabel">روز ۱</span>
+  <section class="page" id="invitePage">
+    <div class="panel">
+      <div class="paneltitle">دعوت دوستان CIP</div>
+      <div class="muted">لینک اختصاصی خودت را برای دوستت بفرست. پس از ورود به ربات و بازی و تکمیل ۵ روز فعالیت تأییدشده، شرایط جایزه بررسی می‌شود.</div>
+      <div style="height:12px"></div>
+      <button class="btn" id="inviteBtn">کپی لینک دعوت اختصاصی</button>
+      <div style="height:8px"></div>
+      <button class="btn secondary" id="shareBtn">ارسال لینک برای دوست</button>
     </div>
-    <div class="score" id="score">۰</div>
-    <div class="statline">
-      <span id="progressText">۰ از ۵۰۰ دانه</span>
-      <span id="percent">۰٪</span>
+    <div class="panel">
+      <div class="paneltitle">دوستان دعوت‌شده</div>
+      <div class="muted" id="inviteSummary">فهرست دعوت‌ها پس از اتصال سرور نمایش داده می‌شود.</div>
+      <div id="inviteList"></div>
     </div>
-    <div class="progress"><div class="bar" id="bar"></div></div>
-    <div class="goal" id="goalText">هدف امروز: ۵۰۰ دانه</div>
   </section>
-
-  <section class="play">
-    <div class="character-title" id="characterTitle">دانه‌های قهوه تو</div>
-    <div class="character" id="character"></div>
-    <button class="bean-button" id="beanButton" aria-label="ضربه برای جمع‌آوری قهوه"></button>
-    <div class="tap">برای جمع‌آوری قهوه ضربه بزن</div>
-    <div class="hint" id="hint">شروع کن و دانه جمع کن!</div>
-  </section>
-
-  <div class="stages" id="stages"></div>
-  <footer class="footer">CIP COFFEE CLUB · یک دانه، یک قدم نزدیک‌تر</footer>
 </main>
 
+<nav class="nav">
+  <button class="active" id="gameTab">☕ بازی</button>
+  <button id="inviteTab">♧ دعوت دوستان</button>
+</nav>
+</div>
+
+<div class="overlay" id="nameOverlay">
+  <div class="dialog">
+    <h3>به باشگاه CIP خوش اومدی</h3>
+    <p>دوست داریم با چه اسمی صدات کنیم؟ اسمت رو وارد کن تا در پروفایل بازی نمایش داده بشه.</p>
+    <input id="nameInput" maxlength="30" placeholder="اسم دلخواهت">
+    <button class="btn" id="saveName">ورود به بازی</button>
+  </div>
+</div>
+
+<div class="overlay" id="messageOverlay">
+  <div class="dialog">
+    <h3 id="messageTitle">باشگاه CIP</h3>
+    <p id="messageText"></p>
+    <button class="btn" id="closeMessage">باشه</button>
+  </div>
+</div>
+
 <script>
-(function(){
-  const tg=window.Telegram?.WebApp;
-  try{tg?.ready();tg?.expand();}catch(e){}
+(() => {
+"use strict";
 
-  const user=tg?.initDataUnsafe?.user||null;
-  const fa=n=>Number(n).toLocaleString("fa-IR");
-  const DAY_MS=24*60*60*1000;
-  const GOALS=[500,800,1100,1400,1700];
-  const playerKey=user?.id?String(user.id):"browser";
-  const STORAGE_KEY="cip_coffee_rush_v4_"+playerKey;
+/* قبل از انتشار، نام کاربری واقعی ربات را اینجا بنویس */
+const BOT_USERNAME = "YOUR_BOT_USERNAME";
+const tg = window.Telegram && window.Telegram.WebApp;
+if (tg) { tg.ready(); tg.expand(); }
 
-  function dateKey(){
-    const d=new Date();
-    return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
-  }
-  function load(){
-    try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"null")}catch(e){return null}
-  }
+const telegramUser = tg && tg.initDataUnsafe && tg.initDataUnsafe.user
+  ? tg.initDataUnsafe.user : null;
+const userId = telegramUser ? String(telegramUser.id) : "browser-demo";
+const storageKey = "cip_coffee_club_v5_" + userId;
+const today = () => new Date().toLocaleDateString("en-CA");
+const goals = [500,800,1100,1400,1700];
 
-  const now=Date.now(),today=dateKey();
-  let data=load();
+let data = {};
+try { data = JSON.parse(localStorage.getItem(storageKey) || "{}"); } catch(e) { data = {}; }
 
-  if(!data||!Number.isFinite(data.lastVisit)){
-    data={day:1,score:0,date:today,lastVisit:now};
-  }else{
-    const gap=now-data.lastVisit;
-    if(gap>=DAY_MS){
-      data.day=1;data.score=0;data.date=today;
-    }else if(data.date!==today){
-      data.day=Math.min(180,Math.max(1,Number(data.day)||1)+1);
-      data.score=0;data.date=today;
+function save() {
+  try { localStorage.setItem(storageKey, JSON.stringify(data)); } catch(e) {}
+}
+function getLevel(day) {
+  if(day >= 180) return 10;
+  if(day >= 120) return 9;
+  if(day >= 90) return 8;
+  if(day >= 60) return 7;
+  if(day >= 30) return 6;
+  return Math.max(1, Math.min(5, day));
+}
+function getSacks(day) {
+  if(day >= 180) return 6;
+  if(day >= 120) return 5;
+  if(day >= 90) return 4;
+  if(day >= 60) return 3;
+  if(day >= 30) return 2;
+  if(day >= 6) return 1;
+  return 0;
+}
+function goalForDay(day) { return goals[Math.min(Math.max(day - 1, 0), 4)]; }
+function openMessage(title, message) {
+  document.getElementById("messageTitle").textContent = title;
+  document.getElementById("messageText").textContent = message;
+  document.getElementById("messageOverlay").classList.add("show");
+}
+function showNameDialog() {
+  document.getElementById("nameOverlay").classList.add("show");
+  document.getElementById("nameInput").value = data.name || "";
+}
+function initializeData() {
+  const t = today();
+  if(!data.day) {
+    data.day = 1; data.score = 0; data.lastDate = t;
+    data.lastVisit = Date.now(); data.level = 1;
+  } else if(data.lastDate !== t) {
+    const elapsed = Date.now() - (data.lastVisit || 0);
+    if(elapsed >= 24 * 60 * 60 * 1000) {
+      data.day = 1; data.score = 0;
+    } else {
+      data.day = (data.day || 1) + 1;
+      data.score = 0;
     }
-    data.day=Math.min(180,Math.max(1,Number(data.day)||1));
-    data.score=Math.max(0,Number(data.score)||0);
-    data.lastVisit=now;
+    data.lastDate = t;
   }
-
-  function save(){
-    try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data))}catch(e){}
-  }
-
-  function levelForDay(day){
-    if(day<=5)return day;
-    if(day<30)return 6;
-    if(day<60)return 7;
-    if(day<90)return 8;
-    if(day<180)return 9;
-    return 10;
-  }
-
-  function sackCount(day){
-    if(day<6)return 0;
-    if(day<30)return 1;
-    if(day<60)return 2;
-    if(day<90)return 3;
-    if(day<120)return 4;
-    if(day<180)return 5;
-    return 6;
-  }
-
-  function renderCharacter(){
-    const holder=document.getElementById("character");
-    holder.innerHTML="";
-    const day=data.day,sacks=sackCount(day);
-
-    if(day<=5){
-      const beans=document.createElement("div");
-      beans.className="beans";
-      for(let i=0;i<day;i++){
-        const bean=document.createElement("span");
-        bean.className="bean";
-        beans.appendChild(bean);
-      }
-      holder.appendChild(beans);
-      document.getElementById("characterTitle").textContent="دانه‌های قهوه تو";
-    }else{
-      const sackRow=document.createElement("div");
-      sackRow.className="sacks";
-      for(let i=0;i<sacks;i++){
-        const sack=document.createElement("div");
-        sack.className="sack";
-        sack.innerHTML='<div class="sack-label">CIP<small>COFFEE</small></div>';
-        sackRow.appendChild(sack);
-      }
-      holder.appendChild(sackRow);
-      document.getElementById("characterTitle").textContent="مجموعه قهوه CIP";
-    }
-  }
-
-  function renderStages(){
-    const holder=document.getElementById("stages");
-    holder.innerHTML="";
-    for(let i=1;i<=10;i++){
-      const el=document.createElement("span");
-      el.className="stage"+(i<=levelForDay(data.day)?" on":"");
-      holder.appendChild(el);
-    }
-  }
-
-  function renderProfile(){
-    const nameEl=document.getElementById("playerName");
-    const idEl=document.getElementById("playerId");
-    const avatar=document.getElementById("avatar");
-
-    if(user){
-      nameEl.textContent=[user.first_name,user.last_name].filter(Boolean).join(" ")||"بازیکن CIP";
-      idEl.textContent=user.username?"@"+user.username:"شناسه "+user.id;
-      if(user.photo_url){
-        const img=document.createElement("img");
-        img.src=user.photo_url;
-        img.alt="";
-        avatar.replaceChildren(img);
-      }else{
-        avatar.textContent="☕";
-      }
-    }else{
-      nameEl.textContent="بازیکن مهمان";
-      idEl.textContent="برای نمایش حساب، از داخل ربات وارد شو";
-    }
-    document.getElementById("level").textContent=fa(levelForDay(data.day));
-  }
-
-  const goal=GOALS[Math.min(data.day,5)-1];
-
-  function render(){
-    document.getElementById("score").textContent=fa(data.score);
-    document.getElementById("progressText").textContent=fa(data.score)+" از "+fa(goal)+" دانه";
-    const pct=Math.min(100,data.score/goal*100);
-    document.getElementById("percent").textContent=fa(Math.floor(pct))+"٪";
-    document.getElementById("bar").style.width=pct+"%";
-    document.getElementById("dayLabel").textContent="روز "+fa(data.day);
-    document.getElementById("goalText").textContent="هدف امروز: "+fa(goal)+" دانه";
-    document.getElementById("hint").textContent=data.score>=goal
-      ?"آفرین! هدف امروز کامل شد."
-      :"تا هدف امروز "+fa(goal-data.score)+" دانه باقی مانده";
-    renderProfile();
-    renderCharacter();
-    renderStages();
-  }
-
-  function scatter(x,y){
-    for(let i=0;i<5;i++){
-      const p=document.createElement("span");
-      p.className="particle";
-      p.style.left=x+"px";
-      p.style.top=y+"px";
-      p.style.setProperty("--dx",(Math.random()*90-45)+"px");
-      p.style.setProperty("--dy",(Math.random()*-65-8)+"px");
-      p.style.setProperty("--rot",(Math.random()*240-120)+"deg");
-      document.getElementById("character").appendChild(p);
-      p.addEventListener("animationend",()=>p.remove(),{once:true});
-    }
-  }
-
-  const button=document.getElementById("beanButton");
-  button.addEventListener("pointerdown",function(e){
-    e.preventDefault();
-    if(data.score>=goal){
-      document.getElementById("hint").textContent="هدف امروز کامل شده؛ فردا دوباره برگرد!";
-      return;
-    }
-    const rect=document.getElementById("character").getBoundingClientRect();
-    scatter(e.clientX-rect.left,e.clientY-rect.top);
-    data.score++;
-    save();
-    render();
-  });
-
-  button.addEventListener("contextmenu",e=>e.preventDefault());
-  document.addEventListener("selectstart",e=>e.preventDefault());
+  data.lastVisit = Date.now();
   save();
+}
+initializeData();
+
+const $ = id => document.getElementById(id);
+function renderCharacter() {
+  const sacks = getSacks(data.day || 1);
+  const bean = $("bean");
+  if(sacks === 0) {
+    bean.style.display = "block";
+    $("characterLabel").textContent = "CIP ROAST";
+  } else {
+    bean.style.display = "none";
+    let sackArea = $("sackArea");
+    if(!sackArea) {
+      sackArea = document.createElement("div");
+      sackArea.id = "sackArea";
+      sackArea.className = "sacks";
+      $("tapArea").appendChild(sackArea);
+    }
+    sackArea.innerHTML = "";
+    for(let i=0;i<sacks;i++) {
+      const sack = document.createElement("div");
+      sack.className = "sack";
+      sack.innerHTML = '<div class="sacklabel">CIP<small>COFFEE</small></div>';
+      sackArea.appendChild(sack);
+    }
+    $("characterLabel").textContent = sacks + " گونی قهوه";
+  }
+}
+function render() {
+  const day = data.day || 1;
+  const goal = goalForDay(day);
+  $("playerName").textContent = data.name || (telegramUser ? [telegramUser.first_name, telegramUser.last_name].filter(Boolean).join(" ") : "بازیکن CIP");
+  $("playerId").textContent = "Telegram ID: " + (telegramUser ? telegramUser.id : "نسخه آزمایشی");
+  if(telegramUser && telegramUser.photo_url && !$("avatar").querySelector("img")) {
+    $("avatar").innerHTML = "";
+    const img = document.createElement("img");
+    img.src = telegramUser.photo_url;
+    img.alt = "پروفایل";
+    $("avatar").appendChild(img);
+  }
+  $("levelNum").textContent = getLevel(day);
+  $("dayLabel").textContent = "روز فعالیت " + day;
+  $("sackLabel").textContent = getSacks(day) ? getSacks(day) + " گونی قهوه" : "دانه قهوه";
+  $("score").textContent = (data.score || 0).toLocaleString("en-US");
+  $("goal").textContent = "هدف امروز: " + goal.toLocaleString("en-US") + " دانه";
+  $("bar").style.width = Math.min(100, (data.score || 0) / goal * 100) + "%";
+  $("gameMessage").textContent = data.score >= goal ? "آفرین! هدف امروز کامل شد. فردا ادامه بده." : "هر ضربه، یک دانه قهوه؛ هدف روزانه‌ات را کامل کن.";
+  renderCharacter();
+}
+function playPourSound() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if(!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const duration = .85;
+    const buffer = ctx.createBuffer(1, ctx.sampleRate * duration, ctx.sampleRate);
+    const channel = buffer.getChannelData(0);
+    for(let i=0;i<channel.length;i++) channel[i] = (Math.random()*2-1) * (1-i/channel.length);
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = "lowpass"; filter.frequency.value = 850;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(.001, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(.20, ctx.currentTime + .08);
+    gain.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + duration);
+    noise.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+    noise.start(); noise.stop(ctx.currentTime + duration);
+    noise.onended = () => ctx.close();
+  } catch(e) {}
+}
+function coffeeRain() {
+  for(let i=0;i<75;i++) {
+    const p = document.createElement("div");
+    p.className = "rainbean";
+    p.style.left = Math.random()*100 + "vw";
+    p.style.animationDelay = Math.random()*.75 + "s";
+    p.style.animationDuration = (2.5 + Math.random()*.8) + "s";
+    p.style.transform = "rotate(" + Math.random()*360 + "deg)";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 4000);
+  }
+}
+function scatterAt(x,y) {
+  const area = $("tapArea").getBoundingClientRect();
+  for(let i=0;i<7;i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = (x-area.left-3) + "px";
+    p.style.top = (y-area.top-5) + "px";
+    p.style.setProperty("--dx", (Math.random()*110-55) + "px");
+    p.style.setProperty("--dy", (Math.random()*100-65) + "px");
+    p.style.setProperty("--rot", (Math.random()*540-270) + "deg");
+    $("tapArea").appendChild(p);
+    setTimeout(() => p.remove(), 500);
+  }
+}
+let lastTap = 0;
+$("tapArea").addEventListener("pointerdown", e => {
+  e.preventDefault();
+  const now = Date.now();
+  if(now-lastTap < 35) return;
+  lastTap = now;
+  scatterAt(e.clientX,e.clientY);
+  if((data.score || 0) < goalForDay(data.day || 1)) {
+    data.score = (data.score || 0) + 1;
+    if(data.score >= goalForDay(data.day || 1)) data.score = goalForDay(data.day || 1);
+    save(); render();
+  }
+});
+
+function showPage(page) {
+  $("gamePage").classList.toggle("active", page === "game");
+  $("invitePage").classList.toggle("active", page === "invite");
+  $("gameTab").classList.toggle("active", page === "game");
+  $("inviteTab").classList.toggle("active", page === "invite");
+}
+$("gameTab").addEventListener("click", () => showPage("game"));
+$("inviteTab").addEventListener("click", () => showPage("invite"));
+
+function inviteUrl() {
+  if(!BOT_USERNAME || BOT_USERNAME === "YOUR_BOT_USERNAME") return null;
+  return "https://t.me/" + BOT_USERNAME + "?start=ref_" + encodeURIComponent(userId);
+}
+async function copyInvite() {
+  const url = inviteUrl();
+  if(!url) {
+    openMessage("یک مرحله باقی مانده", "نام کاربری ربات را در کد جایگزین YOUR_BOT_USERNAME کن. برای ثبت و تأیید دعوت‌ها هم باید سرور ربات وصل شود.");
+    return;
+  }
+  try {
+    if(navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(url);
+    } else {
+      const input = document.createElement("textarea");
+      input.value = url; document.body.appendChild(input);
+      input.select(); document.execCommand("copy"); input.remove();
+    }
+    openMessage("لینک دعوت آماده است", "لینک دعوت کپی شد. تأیید واقعی عضویت و فعالیت دوستت پس از اتصال سرور انجام می‌شود.");
+  } catch(e) {
+    openMessage("لینک دعوت", url);
+  }
+}
+$("inviteBtn").addEventListener("click", copyInvite);
+$("shareBtn").addEventListener("click", async () => {
+  const url = inviteUrl();
+  if(!url) {
+    openMessage("لینک دعوت", "ابتدا نام کاربری واقعی ربات را در کد وارد می‌کنیم؛ سپس ارسال لینک فعال می‌شود.");
+    return;
+  }
+  const text = "به باشگاه مشتریان کافه CIP دعوتی! از این لینک وارد شو: " + url;
+  if(navigator.share) {
+    try { await navigator.share({title:"CIP Coffee Club",text,url}); } catch(e) {}
+  } else {
+    await copyInvite();
+  }
+});
+function renderInvites() {
+  /* فهرست واقعی باید از سرور دریافت شود.
+     داده‌های محلی به‌تنهایی دعوت را احراز نمی‌کنند. */
+  $("inviteSummary").textContent = "هنوز فهرست دعوت‌های تأییدشده از سرور دریافت نشده است.";
+  $("inviteList").innerHTML = "";
+}
+$("saveName").addEventListener("click", () => {
+  const name = $("nameInput").value.trim();
+  if(!name) {
+    $("nameInput").focus();
+    return;
+  }
+  data.name = name;
+  save();
+  $("nameOverlay").classList.remove("show");
   render();
+});
+$("nameInput").addEventListener("keydown", e => {
+  if(e.key === "Enter") $("saveName").click();
+});
+$("closeMessage").addEventListener("click", () => $("messageOverlay").classList.remove("show"));
+
+const previousLevel = Number(data.level || getLevel(data.day || 1));
+const currentLevel = getLevel(data.day || 1);
+if(currentLevel > previousLevel) {
+  coffeeRain();
+  playPourSound();
+}
+data.level = currentLevel;
+save();
+render();
+renderInvites();
+
+if(!data.name) showNameDialog();
 })();
 </script>
 </body>
