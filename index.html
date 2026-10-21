@@ -6,71 +6,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090909">
 <title>CIP Coffee Rush</title>
+
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;background:#090909;color:#f8f2e5;
- font-family:Tahoma,Arial,sans-serif;
+ margin:0;background:#090909;color:#f5eee0;
+ font-family:Tahoma,Arial,sans-serif
 }
-.page{max-width:480px;margin:auto;padding:20px 16px 35px}
-header{text-align:center;padding:14px 0 22px}
+.page{max-width:480px;margin:auto;padding:18px 15px 35px}
+header{text-align:center;padding:12px 0 24px}
 .logo{
- display:inline-flex;align-items:center;justify-content:center;
- width:68px;height:68px;border:1px solid #c9a45c;
- border-radius:50%;font-size:35px;
- box-shadow:0 0 28px #c9a45c20;margin-bottom:10px;
-}
-.brand{font-size:29px;font-weight:900;letter-spacing:4px;color:#e1bd72}
-.subtitle{font-size:11px;letter-spacing:3px;color:#a99b7d;margin-top:7px}
-.panel{
- background:linear-gradient(145deg,#191714,#101010);
- border:1px solid #40331f;border-radius:20px;
- padding:18px;margin-bottom:15px;
-}
-.small{font-size:12px;color:#b7aa91}
-.score{text-align:center}
-.score-number{font-size:46px;font-weight:900;color:#e5c477;margin:10px 0}
-.gold{color:#e5c477}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.progress{height:7px;background:#383128;border-radius:20px;overflow:hidden;margin-top:12px}
-.bar{height:100%;width:0;background:linear-gradient(90deg,#987033,#f3d995);transition:width .2s}
-.play{text-align:center;padding:24px 16px 20px}
-.bean{
- width:190px;height:190px;border-radius:50%;
- margin:12px auto 20px;
+ width:68px;height:68px;margin:0 auto 12px;
+ border:1px solid #cba65d;border-radius:50%;
  display:flex;align-items:center;justify-content:center;
- background:radial-gradient(circle at 35% 25%,#34302a,#111 68%);
- border:1px solid #8b6b32;
- box-shadow:0 0 0 8px #c9a45c0b,0 0 45px #c9a45c20;
- cursor:pointer;user-select:none;touch-action:manipulation;
- transition:transform .08s;
+ font-size:32px;box-shadow:0 0 25px #cba65d20
 }
-.bean:active{transform:scale(.93)}
-.bean span{font-size:90px;filter:drop-shadow(0 5px 8px #000)}
-.tap{font-size:17px;font-weight:bold}
-.hint{font-size:11px;color:#9d927e;margin-top:9px}
-button{font-family:inherit;cursor:pointer}
-.missions h3{margin:0 0 16px;font-size:16px}
-.mission{
- padding:12px 0;border-bottom:1px solid #30291f;
+.brand{font-size:28px;font-weight:900;letter-spacing:3px;color:#e2c078}
+.subtitle{font-size:10px;letter-spacing:3px;color:#a99a7c;margin-top:8px}
+.panel{
+ background:linear-gradient(145deg,#1b1915,#101010);
+ border:1px solid #423520;border-radius:20px;
+ padding:18px;margin-bottom:15px
 }
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.small{font-size:12px;color:#b6aa96}
+.gold{color:#e3c078}
+.pill{padding:7px 10px;border:1px solid #6b542f;border-radius:30px;font-size:11px;color:#e3c078}
+.score{text-align:center}
+.score-number{font-size:43px;font-weight:bold;color:#e3c078;margin:12px 0}
+.progress{height:7px;background:#393126;border-radius:20px;overflow:hidden;margin-top:12px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#967039,#f1d795);transition:width .2s}
+.level{text-align:center;margin:15px 0 5px;font-size:13px}
+.play{text-align:center;padding:20px 14px}
+.character{
+ min-height:220px;display:flex;align-items:center;
+ justify-content:center;gap:5px;flex-wrap:wrap;
+ margin:10px auto 18px;padding:12px 0
+}
+.bean-button{
+ width:100%;background:transparent;border:0;padding:0;
+ cursor:pointer;touch-action:manipulation
+}
+.bean-button:active .bean{transform:scale(.91) rotate(34deg)}
+.beans{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.bean{
+ position:relative;display:inline-block;
+ width:44px;height:65px;border-radius:53% 47% 49% 51% / 45% 44% 56% 55%;
+ transform:rotate(34deg);
+ background:radial-gradient(ellipse at 28% 20%,#8b5a30 0%,#59351f 25%,#352016 58%,#160f0b 100%);
+ border:1px solid #9c7040;
+ box-shadow:inset 4px 4px 8px #d3a16b25,inset -5px -7px 10px #000b,0 5px 9px #0008;
+ transition:transform .1s
+}
+.bean:before{
+ content:"";position:absolute;top:5%;left:47%;width:5px;height:90%;
+ border-radius:50%;background:linear-gradient(90deg,#120d09,#bc8c4a 48%,#24150c);
+ transform:rotate(3deg);
+ clip-path:polygon(45% 0,100% 8%,58% 20%,85% 32%,50% 44%,80% 57%,45% 69%,65% 82%,40% 100%,0 96%,27% 80%,5% 66%,32% 53%,8% 39%,40% 24%,20% 12%)
+}
+.sacks{display:flex;align-items:flex-end;justify-content:center;gap:5px;flex-wrap:wrap}
+.sack{
+ width:70px;height:105px;position:relative;
+ border:1px solid #b18a4b;border-radius:12px 12px 8px 8px;
+ background:repeating-linear-gradient(90deg,#634328 0,#634328 3px,#795333 4px,#50351f 7px);
+ box-shadow:inset 0 0 12px #1b0e05,0 6px 12px #0008;
+ display:flex;align-items:center;justify-content:center;
+ clip-path:polygon(9% 7%,25% 12%,75% 12%,91% 7%,100% 100%,0 100%)
+}
+.sack:before{
+ content:"";position:absolute;top:10px;left:8px;right:8px;height:5px;
+ background:#c6a56b;border-radius:3px
+}
+.sack-label{
+ position:relative;width:54px;padding:8px 0;
+ border-top:1px solid #d7b56d;border-bottom:1px solid #d7b56d;
+ background:#17120d;text-align:center;color:#e6c477;
+ font-size:11px;font-weight:bold;line-height:1.7
+}
+.sack-label small{display:block;font-size:7px;letter-spacing:1px}
+.tap{font-size:16px;font-weight:bold}
+.hint{font-size:11px;color:#a69a83;margin-top:10px;line-height:2}
+.section-title{font-size:15px;font-weight:bold;margin:0 0 15px}
+.mission{padding:13px 0;border-bottom:1px solid #30291f}
 .mission:last-child{border:0;padding-bottom:0}
-.mission-icon{font-size:23px}
+.mission-icon{font-size:22px}
 .mission-name{font-size:12px;font-weight:bold}
-.mission-desc{font-size:10px;color:#9f9584;margin-top:5px}
-.tag{
- font-size:10px;color:#e5c477;border:1px solid #65502d;
- padding:6px 8px;border-radius:20px;white-space:nowrap
-}
-.claimed{color:#8cbe91;border-color:#426b46}
-.reward{
- text-align:center;border:1px dashed #826b3f;
- background:#1b1710;border-radius:14px;padding:15px;
-}
+.mission-desc{font-size:10px;color:#a89c87;margin-top:5px}
+.tag{font-size:10px;color:#e3c078;border:1px solid #65502e;padding:7px 9px;border-radius:20px;white-space:nowrap}
+.done{color:#9bc995;border-color:#456b40}
+.reward{text-align:center;background:#18140e;border:1px dashed #80683d;border-radius:15px;padding:17px}
 .reward-icon{font-size:28px}
-footer{text-align:center;color:#746b5b;font-size:10px;line-height:2;margin-top:20px}
+.reward-title{font-weight:bold;color:#e3c078;margin:8px 0}
+.notice{font-size:10px;color:#9e927d;line-height:2;margin-top:10px}
+footer{text-align:center;font-size:10px;color:#746b5c;line-height:2.2;margin-top:20px}
 </style>
 </head>
+
 <body>
 <div class="page">
 <header>
@@ -79,121 +110,217 @@ footer{text-align:center;color:#746b5b;font-size:10px;line-height:2;margin-top:2
  <div class="subtitle">COFFEE RUSH · CLUB</div>
 </header>
 
-<section class="panel score">
+<section class="panel">
  <div class="row">
-  <span class="small">دانه‌های امروز</span>
-  <span class="tag">☀️ مأموریت روزانه</span>
+  <span class="small">دانه‌های جمع‌شده</span>
+  <span class="pill" id="dayLabel">روز اول</span>
  </div>
- <div class="score-number" id="score">0</div>
+ <div class="score">
+  <div class="score-number" id="score">۰</div>
+ </div>
  <div class="row small">
-  <span>پیشرفت امروز</span>
-  <span id="progressText">۰ از ۱۰۰</span>
+  <span>پیشرفت مأموریت</span>
+  <span id="progressText">۰ از ۵۰۰</span>
  </div>
  <div class="progress"><div class="bar" id="bar"></div></div>
+ <div class="level gold" id="goalText">هدف امروز: ۵۰۰ دانه</div>
 </section>
 
 <section class="panel play">
- <div class="small">هر ضربه، یک قدم نزدیک‌تر به قهوه!</div>
- <div class="bean" id="bean" role="button" aria-label="جمع کردن دانه قهوه">
-  <span>🫘</span>
- </div>
- <div class="tap">برای جمع‌کردن دانه ضربه بزن</div>
- <div class="hint" id="hint">امروز ۱۰۰ دانه فرصت داری</div>
+ <div class="small" id="characterTitle">شخصیت قهوه‌ای تو</div>
+
+ <button class="bean-button" id="beanButton" aria-label="جمع‌آوری دانه قهوه">
+  <div class="character" id="character"></div>
+ </button>
+
+ <div class="tap">برای جمع‌آوری ضربه بزن</div>
+ <div class="hint" id="hint">شروع کن و دانه جمع کن!</div>
+ <div class="hint gold" id="stageHint"></div>
 </section>
 
-<section class="panel missions">
- <h3>🏆 مأموریت‌های امروز</h3>
+<section class="panel">
+ <h3 class="section-title">🏆 مأموریت‌های امروز</h3>
 
  <div class="mission row">
   <div class="row">
    <span class="mission-icon">☕</span>
    <div>
-    <div class="mission-name">شروع قهوه‌ای</div>
-    <div class="mission-desc">جمع‌آوری ۲۵ دانه</div>
+    <div class="mission-name">قهوه‌دوست</div>
+    <div class="mission-desc">جمع‌آوری ۲۵٪ هدف روزانه</div>
    </div>
   </div>
-  <span class="tag" id="m25">۰ / ۲۵</span>
+  <span class="tag" id="m1">۰٪</span>
  </div>
 
  <div class="mission row">
   <div class="row">
    <span class="mission-icon">🔥</span>
    <div>
-    <div class="mission-name">باریستای پرتلاش</div>
-    <div class="mission-desc">جمع‌آوری ۵۰ دانه</div>
+    <div class="mission-name">ادامه بده</div>
+    <div class="mission-desc">جمع‌آوری ۵۰٪ هدف روزانه</div>
    </div>
   </div>
-  <span class="tag" id="m50">۰ / ۵۰</span>
+  <span class="tag" id="m2">۰٪</span>
  </div>
 
  <div class="mission row">
   <div class="row">
    <span class="mission-icon">👑</span>
    <div>
-    <div class="mission-name">استاد CIP</div>
-    <div class="mission-desc">تکمیل ۱۰۰ دانه روزانه</div>
+    <div class="mission-name">هدف نهایی</div>
+    <div class="mission-desc">تکمیل هدف روزانه</div>
    </div>
   </div>
-  <span class="tag" id="m100">۰ / ۱۰۰</span>
+  <span class="tag" id="m3">۰٪</span>
  </div>
 </section>
 
 <section class="reward">
  <div class="reward-icon">🎁</div>
- <div class="gold" style="font-weight:bold;margin:8px">جایزه‌ی باشگاه CIP</div>
- <div class="small">امتیازهای بازی در نسخه‌ی آزمایشی ثبت می‌شوند.</div>
- <div class="hint">جوایز واقعی قهوه و نوشیدنی پس از اتصال سامانه‌ی امن فعال می‌شوند.</div>
+ <div class="reward-title">باشگاه مشتریان CIP</div>
+ <div class="small">هر روز برگرد، پیشرفت کن و شخصیت قهوه‌ای خودت را ارتقا بده.</div>
+ <div class="notice">این نسخه آزمایشی است. صدور و اعتبارسنجی تخفیف واقعی هنوز به سامانه امن متصل نشده است.</div>
 </section>
 
 <footer>
  CIP COFFEE CLUB<br>
- یک بازی کوچک، برای یک حال خوب ☕
+ یک دانه، یک قدم نزدیک‌تر به قهوه ☕
 </footer>
 </div>
 
 <script>
-const today = new Date().toLocaleDateString('en-CA');
-let saved;
-try { saved = JSON.parse(localStorage.getItem('cipGame')); } catch(e) {}
-let data = saved && saved.day === today
- ? saved : {day:today,score:0};
+(function(){
+ const DAY_MS = 24 * 60 * 60 * 1000;
+ const GOALS = [500,800,1100,1400,1700];
+ const STORAGE_KEY = "cip_coffee_rush_v3";
+ const fa = n => Number(n).toLocaleString("fa-IR");
 
-data.score = Math.max(0,Math.min(100,Number(data.score)||0));
-
-const scoreEl=document.getElementById('score');
-const bar=document.getElementById('bar');
-const progressText=document.getElementById('progressText');
-const hint=document.getElementById('hint');
-
-function render(){
- const s=data.score;
- scoreEl.textContent=s.toLocaleString('fa-IR');
- progressText.textContent=s.toLocaleString('fa-IR')+' از ۱۰۰';
- bar.style.width=s+'%';
- updateMission('m25',s,25);
- updateMission('m50',s,50);
- updateMission('m100',s,100);
- hint.textContent=s>=100
-  ? 'آفرین! سهمیه‌ی امروزت کامل شد 🌟'
-  : 'فقط '+(100-s).toLocaleString('fa-IR')+' دانه تا پایان سهمیه';
- try { localStorage.setItem('cipGame',JSON.stringify(data)); } catch(e) {}
-}
-function updateMission(id,s,target){
- const el=document.getElementById(id);
- if(s>=target){
-  el.textContent='✓ تکمیل شد';
-  el.classList.add('claimed');
- }else{
-  el.textContent=s.toLocaleString('fa-IR')+' / '+target.toLocaleString('fa-IR');
-  el.classList.remove('claimed');
+ function dateKey(){
+  const d = new Date();
+  return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
  }
-}
-document.getElementById('bean').addEventListener('click',()=>{
- if(data.score>=100)return;
- data.score++;
+
+ function load(){
+  try{
+   const raw = localStorage.getItem(STORAGE_KEY);
+   if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return null;
+ }
+
+ const now = Date.now();
+ const today = dateKey();
+ let data = load();
+
+ if(!data || !Number.isFinite(data.lastVisit)){
+  data={day:1,score:0,date:today,lastVisit:now};
+ }else{
+  const gap=now-data.lastVisit;
+
+  if(gap>=DAY_MS){
+   data.day=1;
+   data.score=0;
+   data.date=today;
+  }else if(data.date!==today){
+   data.day=Math.min(180,Math.max(1,Number(data.day)||1)+1);
+   data.score=0;
+   data.date=today;
+  }
+
+  data.day=Math.min(180,Math.max(1,Number(data.day)||1));
+  data.score=Math.max(0,Number(data.score)||0);
+  data.lastVisit=now;
+ }
+
+ function save(){
+  try{
+   localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+  }catch(e){}
+ }
+
+ function sackCount(day){
+  if(day<6) return 0;
+  if(day<30) return 1;
+  if(day<60) return 2;
+  if(day<90) return 3;
+  if(day<120) return 4;
+  if(day<180) return 5;
+  return 6;
+ }
+
+ function renderCharacter(){
+  const holder=document.getElementById("character");
+  holder.innerHTML="";
+  const day=data.day;
+  const sacks=sackCount(day);
+
+  if(day<=5){
+   const beans=document.createElement("div");
+   beans.className="beans";
+   for(let i=0;i<day;i++){
+    const bean=document.createElement("span");
+    bean.className="bean";
+    beans.appendChild(bean);
+   }
+   holder.appendChild(beans);
+   document.getElementById("characterTitle").textContent="دانه‌های قهوه تو";
+   document.getElementById("stageHint").textContent=
+    "مرحله "+fa(day)+" از ۵ · روز "+fa(day);
+  }else{
+   const sackRow=document.createElement("div");
+   sackRow.className="sacks";
+   for(let i=0;i<sacks;i++){
+    const sack=document.createElement("div");
+    sack.className="sack";
+    sack.innerHTML='<div class="sack-label">CIP<small>COFFEE</small></div>';
+    sackRow.appendChild(sack);
+   }
+   holder.appendChild(sackRow);
+   document.getElementById("characterTitle").textContent="مجموعه قهوه CIP";
+   document.getElementById("stageHint").textContent=
+    fa(sacks)+" گونی · روز "+fa(day)+" از ۱۸۰";
+  }
+ }
+
+ const goal=GOALS[Math.min(data.day,5)-1];
+
+ function mission(id,percent){
+  const el=document.getElementById(id);
+  const done=data.score>=Math.ceil(goal*percent/100);
+  el.textContent=done?"✓ تکمیل شد":fa(Math.floor(data.score/goal*100))+"٪";
+  el.classList.toggle("done",done);
+ }
+
+ function render(){
+  document.getElementById("score").textContent=fa(data.score);
+  document.getElementById("progressText").textContent=fa(data.score)+" از "+fa(goal);
+  document.getElementById("bar").style.width=Math.min(100,data.score/goal*100)+"%";
+  document.getElementById("dayLabel").textContent="روز "+fa(data.day);
+  document.getElementById("goalText").textContent="هدف امروز: "+fa(goal)+" دانه";
+
+  mission("m1",25);
+  mission("m2",50);
+  mission("m3",100);
+  renderCharacter();
+
+  document.getElementById("hint").textContent=data.score>=goal
+   ?"آفرین! هدف امروزت کامل شد. فردا دوباره ادامه بده."
+   :"تا رسیدن به هدف امروز: "+fa(goal-data.score)+" دانه";
+ }
+
+ document.getElementById("beanButton").addEventListener("click",function(){
+  if(data.score>=goal){
+   document.getElementById("hint").textContent="هدف امروز کامل شده؛ فردا دوباره برگرد!";
+   return;
+  }
+  data.score++;
+  save();
+  render();
+ });
+
+ save();
  render();
-});
-render();
+})();
 </script>
 </body>
 </html>
