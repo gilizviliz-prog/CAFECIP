@@ -4,49 +4,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
 <title>CIP Coffee Rush</title>
 <style>
-body {
-  background: #101010;
-  color: #e6c77a;
-  font-family: Tahoma, sans-serif;
-  text-align: center;
-  padding: 30px 15px;
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090909;color:#f8f2e5;
+ font-family:Tahoma,Arial,sans-serif;
 }
-.card {
-  background: #1b1b1b;
-  border: 1px solid #b8954a;
-  border-radius: 20px;
-  padding: 25px;
-  max-width: 400px;
-  margin: auto;
+.page{max-width:480px;margin:auto;padding:20px 16px 35px}
+header{text-align:center;padding:14px 0 22px}
+.logo{
+ display:inline-flex;align-items:center;justify-content:center;
+ width:68px;height:68px;border:1px solid #c9a45c;
+ border-radius:50%;font-size:35px;
+ box-shadow:0 0 28px #c9a45c20;margin-bottom:10px;
 }
-button {
-  background: #d7b56d;
-  color: #111;
-  border: 0;
-  border-radius: 12px;
-  padding: 15px 25px;
-  font-size: 18px;
-  font-weight: bold;
+.brand{font-size:29px;font-weight:900;letter-spacing:4px;color:#e1bd72}
+.subtitle{font-size:11px;letter-spacing:3px;color:#a99b7d;margin-top:7px}
+.panel{
+ background:linear-gradient(145deg,#191714,#101010);
+ border:1px solid #40331f;border-radius:20px;
+ padding:18px;margin-bottom:15px;
 }
+.small{font-size:12px;color:#b7aa91}
+.score{text-align:center}
+.score-number{font-size:46px;font-weight:900;color:#e5c477;margin:10px 0}
+.gold{color:#e5c477}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.progress{height:7px;background:#383128;border-radius:20px;overflow:hidden;margin-top:12px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#987033,#f3d995);transition:width .2s}
+.play{text-align:center;padding:24px 16px 20px}
+.bean{
+ width:190px;height:190px;border-radius:50%;
+ margin:12px auto 20px;
+ display:flex;align-items:center;justify-content:center;
+ background:radial-gradient(circle at 35% 25%,#34302a,#111 68%);
+ border:1px solid #8b6b32;
+ box-shadow:0 0 0 8px #c9a45c0b,0 0 45px #c9a45c20;
+ cursor:pointer;user-select:none;touch-action:manipulation;
+ transition:transform .08s;
+}
+.bean:active{transform:scale(.93)}
+.bean span{font-size:90px;filter:drop-shadow(0 5px 8px #000)}
+.tap{font-size:17px;font-weight:bold}
+.hint{font-size:11px;color:#9d927e;margin-top:9px}
+button{font-family:inherit;cursor:pointer}
+.missions h3{margin:0 0 16px;font-size:16px}
+.mission{
+ padding:12px 0;border-bottom:1px solid #30291f;
+}
+.mission:last-child{border:0;padding-bottom:0}
+.mission-icon{font-size:23px}
+.mission-name{font-size:12px;font-weight:bold}
+.mission-desc{font-size:10px;color:#9f9584;margin-top:5px}
+.tag{
+ font-size:10px;color:#e5c477;border:1px solid #65502d;
+ padding:6px 8px;border-radius:20px;white-space:nowrap
+}
+.claimed{color:#8cbe91;border-color:#426b46}
+.reward{
+ text-align:center;border:1px dashed #826b3f;
+ background:#1b1710;border-radius:14px;padding:15px;
+}
+.reward-icon{font-size:28px}
+footer{text-align:center;color:#746b5b;font-size:10px;line-height:2;margin-top:20px}
 </style>
 </head>
 <body>
-<div class="card">
-<h1>CIP COFFEE RUSH ☕</h1>
-<p>باشگاه مشتریان کافه CIP</p>
-<h2>دانه‌های قهوه: <span id="score">0</span></h2>
-<button onclick="addBean()">جمع کردن دانه ☕</button>
-<p id="message">به بازی خوش آمدی!</p>
+<div class="page">
+<header>
+ <div class="logo">☕</div>
+ <div class="brand">CIP COFFEE</div>
+ <div class="subtitle">COFFEE RUSH · CLUB</div>
+</header>
+
+<section class="panel score">
+ <div class="row">
+  <span class="small">دانه‌های امروز</span>
+  <span class="tag">☀️ مأموریت روزانه</span>
+ </div>
+ <div class="score-number" id="score">0</div>
+ <div class="row small">
+  <span>پیشرفت امروز</span>
+  <span id="progressText">۰ از ۱۰۰</span>
+ </div>
+ <div class="progress"><div class="bar" id="bar"></div></div>
+</section>
+
+<section class="panel play">
+ <div class="small">هر ضربه، یک قدم نزدیک‌تر به قهوه!</div>
+ <div class="bean" id="bean" role="button" aria-label="جمع کردن دانه قهوه">
+  <span>🫘</span>
+ </div>
+ <div class="tap">برای جمع‌کردن دانه ضربه بزن</div>
+ <div class="hint" id="hint">امروز ۱۰۰ دانه فرصت داری</div>
+</section>
+
+<section class="panel missions">
+ <h3>🏆 مأموریت‌های امروز</h3>
+
+ <div class="mission row">
+  <div class="row">
+   <span class="mission-icon">☕</span>
+   <div>
+    <div class="mission-name">شروع قهوه‌ای</div>
+    <div class="mission-desc">جمع‌آوری ۲۵ دانه</div>
+   </div>
+  </div>
+  <span class="tag" id="m25">۰ / ۲۵</span>
+ </div>
+
+ <div class="mission row">
+  <div class="row">
+   <span class="mission-icon">🔥</span>
+   <div>
+    <div class="mission-name">باریستای پرتلاش</div>
+    <div class="mission-desc">جمع‌آوری ۵۰ دانه</div>
+   </div>
+  </div>
+  <span class="tag" id="m50">۰ / ۵۰</span>
+ </div>
+
+ <div class="mission row">
+  <div class="row">
+   <span class="mission-icon">👑</span>
+   <div>
+    <div class="mission-name">استاد CIP</div>
+    <div class="mission-desc">تکمیل ۱۰۰ دانه روزانه</div>
+   </div>
+  </div>
+  <span class="tag" id="m100">۰ / ۱۰۰</span>
+ </div>
+</section>
+
+<section class="reward">
+ <div class="reward-icon">🎁</div>
+ <div class="gold" style="font-weight:bold;margin:8px">جایزه‌ی باشگاه CIP</div>
+ <div class="small">امتیازهای بازی در نسخه‌ی آزمایشی ثبت می‌شوند.</div>
+ <div class="hint">جوایز واقعی قهوه و نوشیدنی پس از اتصال سامانه‌ی امن فعال می‌شوند.</div>
+</section>
+
+<footer>
+ CIP COFFEE CLUB<br>
+ یک بازی کوچک، برای یک حال خوب ☕
+</footer>
 </div>
+
 <script>
-let score = 0;
-function addBean() {
-  score++;
-  document.getElementById('score').textContent = score;
-  document.getElementById('message').textContent = 'آفرین! یک دانه جمع کردی.';
+const today = new Date().toLocaleDateString('en-CA');
+let saved;
+try { saved = JSON.parse(localStorage.getItem('cipGame')); } catch(e) {}
+let data = saved && saved.day === today
+ ? saved : {day:today,score:0};
+
+data.score = Math.max(0,Math.min(100,Number(data.score)||0));
+
+const scoreEl=document.getElementById('score');
+const bar=document.getElementById('bar');
+const progressText=document.getElementById('progressText');
+const hint=document.getElementById('hint');
+
+function render(){
+ const s=data.score;
+ scoreEl.textContent=s.toLocaleString('fa-IR');
+ progressText.textContent=s.toLocaleString('fa-IR')+' از ۱۰۰';
+ bar.style.width=s+'%';
+ updateMission('m25',s,25);
+ updateMission('m50',s,50);
+ updateMission('m100',s,100);
+ hint.textContent=s>=100
+  ? 'آفرین! سهمیه‌ی امروزت کامل شد 🌟'
+  : 'فقط '+(100-s).toLocaleString('fa-IR')+' دانه تا پایان سهمیه';
+ try { localStorage.setItem('cipGame',JSON.stringify(data)); } catch(e) {}
 }
+function updateMission(id,s,target){
+ const el=document.getElementById(id);
+ if(s>=target){
+  el.textContent='✓ تکمیل شد';
+  el.classList.add('claimed');
+ }else{
+  el.textContent=s.toLocaleString('fa-IR')+' / '+target.toLocaleString('fa-IR');
+  el.classList.remove('claimed');
+ }
+}
+document.getElementById('bean').addEventListener('click',()=>{
+ if(data.score>=100)return;
+ data.score++;
+ render();
+});
+render();
 </script>
 </body>
 </html>
