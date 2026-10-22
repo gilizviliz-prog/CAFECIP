@@ -15,50 +15,50 @@ body{background:radial-gradient(ellipse at 50% 5%,#302116 0,#17110c 42%,#100d0a 
 button,input{font:inherit}
 button{cursor:pointer;border:0}
 button:focus,input:focus{outline:none}
-.app{max-width:520px;min-height:100dvh;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 16px calc(22px + env(safe-area-inset-bottom));position:relative;overflow:hidden}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px 16px}
+.app{max-width:520px;min-height:100dvh;margin:auto;padding:calc(7px + env(safe-area-inset-top)) 12px calc(8px + env(safe-area-inset-bottom));position:relative;overflow:hidden}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 2px 8px}
 .brand{display:flex;align-items:center;gap:10px}
 .logo{width:44px;height:44px;border:1px solid #99743c;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#3a2816,#17110c);color:var(--gold2);font-size:20px;font-weight:bold;box-shadow:inset 0 0 16px #000}
 .brand h1{font-size:18px;letter-spacing:1px;margin:0;color:var(--gold2)}
 .brand p{font-size:11px;margin:4px 0 0;color:var(--muted)}
-.pill{border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-size:11px;color:var(--gold2);white-space:nowrap}
-.profile{display:flex;align-items:center;gap:12px;padding:13px;background:linear-gradient(135deg,#261b11,#17120e);border:1px solid var(--line);border-radius:18px}
+.profile{display:flex;align-items:center;gap:10px;padding:9px;background:linear-gradient(135deg,#261b11,#17120e);border:1px solid var(--line);border-radius:18px}
 .avatar{width:45px;height:45px;flex:0 0 45px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#e2bb69,#79501e);color:#1b1208;font-size:19px;font-weight:bold}
 .profile-main{flex:1;min-width:0}
 .name{font-size:14px;font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.idline{font-size:10px;color:var(--muted);margin-top:5px;direction:ltr;text-align:right}
+.idline{font-size:10px;color:var(--muted);margin-top:5px;direction:ltr;text-align:right;overflow-wrap:anywhere}
 .level{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:11px}
 .level b{color:var(--gold2)}
 .discount{background:#4a3519;border:1px solid #8d6a31;color:#ffe3a2;border-radius:999px;padding:4px 8px;font-weight:bold}
-.stat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.statbox{padding:13px;border-radius:15px;background:#1b1510;border:1px solid #3b2b1c}
+.stat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:9px}
+.statbox{padding:9px;border-radius:15px;background:#1b1510;border:1px solid #3b2b1c}
 .statbox span{font-size:11px;color:var(--muted)}
-.statbox strong{display:block;margin-top:7px;font-size:19px;color:var(--gold2)}
-.game{margin-top:14px;border:1px solid var(--line);border-radius:22px;padding:16px 14px 18px;background:linear-gradient(160deg,#241a12,#15100c);text-align:center;position:relative;overflow:hidden}
-.dayline{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted)}
+.statbox strong{display:block;margin-top:5px;font-size:19px;color:var(--gold2)}
+.game{margin-top:9px;border:1px solid var(--line);border-radius:22px;padding:11px 12px 12px;background:linear-gradient(160deg,#241a12,#15100c);text-align:center;position:relative;overflow:hidden}
+.dayline{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);gap:8px}
 .dayline strong{color:var(--gold2)}
-.bean-stage{height:220px;display:grid;place-items:center;position:relative;isolation:isolate}
-.bean-button{position:relative;width:145px;height:180px;background:transparent;display:grid;place-items:center;z-index:2;touch-action:manipulation}
-.bean{width:105px;height:151px;border-radius:58% 42% 58% 42% / 48% 42% 58% 52%;transform:rotate(36deg);background:radial-gradient(ellipse at 28% 22%,#a86b3b 0,#6d3d20 24%,#35190e 56%,#170b06 83%);box-shadow:inset 9px 8px 11px #e4a66c55,inset -12px -14px 15px #000b,0 20px 30px #000a;position:relative;border:1px solid #9a6032}
-.bean:before{content:"";position:absolute;top:7%;left:48%;height:86%;width:11px;border-radius:50%;background:linear-gradient(90deg,#140904,#5a301a 40%,#120703);transform:rotate(-8deg);box-shadow:1px 0 2px #b67b4c55}
-.bean:after{content:"";position:absolute;inset:10px 16px 15px 12px;border-radius:50%;border-left:2px solid #e1a16a55;filter:blur(1px)}
+.bean-stage{height:clamp(145px,24dvh,190px);display:grid;place-items:center;position:relative;isolation:isolate}
+.bean-button{position:relative;width:135px;height:clamp(135px,21dvh,170px);background:transparent;display:grid;place-items:center;z-index:2;touch-action:manipulation}
+.bean{width:108px;height:clamp(120px,19dvh,148px);border-radius:58% 42% 58% 42% / 48% 42% 58% 52%;transform:rotate(36deg);background:radial-gradient(ellipse at 24% 17%,#e0a56c 0%,#a66a3c 13%,#71401f 30%,#482312 54%,#261006 77%,#100603 100%);box-shadow:inset 7px 5px 8px #ffe0ad77,inset -13px -17px 18px #000e,inset 2px -3px 5px #d08a4b55,0 20px 28px #000b,0 0 22px #b7783530;position:relative;border:1px solid #9a6032}
+.bean:before{content:"";position:absolute;top:5%;left:45%;height:90%;width:15px;border-radius:50%;background:linear-gradient(90deg,#100502 0%,#2b1208 24%,#714224 43%,#170904 62%,#080301 100%);transform:rotate(-8deg);box-shadow:2px 0 3px #e4a56b55,-2px 0 4px #000a}
+.bean:after{content:"";position:absolute;inset:8px 12px 12px 9px;border-radius:50%;border-left:3px solid #f3c18a66;border-top:1px solid #ffd9a044;filter:blur(.6px);box-shadow:inset 5px 0 7px #e2a46a20}
 .bean-button:active .bean{transform:rotate(36deg) scale(.93)}
+.bean-button:disabled{cursor:not-allowed;opacity:.8}
 .bean-hint{font-size:11px;color:var(--muted);margin-top:-2px}
-.progress-wrap{margin-top:12px}
-.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:8px}
+.progress-wrap{margin-top:10px}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:7px}
 .progress{height:9px;border-radius:999px;background:#080706;border:1px solid #4b3722;overflow:hidden}
 .progress-in{height:100%;width:0;background:linear-gradient(90deg,#8c5b21,#f1d48e);border-radius:999px;transition:width .25s}
-.primary{width:100%;border-radius:13px;padding:14px 12px;margin-top:14px;background:linear-gradient(135deg,#f0d18c,#b88232);color:#21160a;font-weight:bold;box-shadow:0 6px 18px #0005}
+.primary{width:100%;border-radius:13px;padding:12px;margin-top:11px;background:linear-gradient(135deg,#f0d18c,#b88232);color:#21160a;font-weight:bold;box-shadow:0 6px 18px #0005}
 .primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
 .secondary{border:1px solid #75572e;color:var(--gold2);background:#241a11;border-radius:12px;padding:11px 12px}
-.note{font-size:10px;line-height:1.8;color:var(--muted);margin-top:10px}
-.lock-card{margin-top:12px;padding:13px;border:1px solid #5a4325;background:#241a10;border-radius:14px;line-height:1.8;font-size:12px;color:#ead7b6}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.tab{padding:12px;border:1px solid var(--line);border-radius:12px;background:#17110c;color:var(--muted)}
+.note{font-size:10px;line-height:1.8;color:var(--muted);margin-top:8px}
+.lock-card{margin-top:10px;padding:11px;border:1px solid #5a4325;background:#241a10;border-radius:14px;line-height:1.8;font-size:12px;color:#ead7b6}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.tab{padding:10px;border:1px solid var(--line);border-radius:12px;background:#17110c;color:var(--muted)}
 .tab.active{background:#392817;color:var(--gold2);border-color:#94713b}
-.panel{display:none;margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:18px;background:#1b1510}
+.panel{display:none;margin-top:10px;padding:13px;border:1px solid var(--line);border-radius:18px;background:#1b1510}
 .panel.active{display:block}
-.panel h2{font-size:15px;margin:0 0 10px;color:var(--gold2)}
+.panel h2{font-size:15px;margin:0 0 8px;color:var(--gold2)}
 .inviteurl{direction:ltr;overflow-wrap:anywhere;padding:11px;border-radius:10px;background:#0e0b08;border:1px solid var(--line);font-size:11px;color:#ddc69f}
 .list{display:grid;gap:8px;margin-top:12px}
 .friend{display:flex;gap:10px;align-items:center;padding:10px;background:#251b12;border-radius:12px}
@@ -67,7 +67,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;pa
 .friendinfo strong{display:block;font-size:12px}
 .friendinfo small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
 .empty{font-size:12px;line-height:1.8;color:var(--muted);padding:12px 0}
-footer{text-align:center;font-size:10px;color:#857462;margin:18px 0 4px}
+footer{text-align:center;font-size:10px;color:#857462;margin:12px 0 4px}
 .modal{position:fixed;inset:0;z-index:20;background:#000c;display:none;align-items:center;justify-content:center;padding:20px}
 .modal.show{display:flex}
 .modalbox{width:min(100%,430px);max-height:88dvh;overflow:auto;background:#1b1510;border:1px solid #876630;border-radius:20px;padding:20px;box-shadow:0 18px 60px #000b}
@@ -79,93 +79,91 @@ footer{text-align:center;font-size:10px;color:#857462;margin:18px 0 4px}
 .accept input{margin-top:5px;accent-color:#d8ad5b}
 .toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:40;padding:11px 16px;border-radius:999px;background:#f0d18c;color:#21160a;font-size:12px;font-weight:bold;transition:.25s;max-width:90%;text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.particle{position:absolute;width:8px;height:13px;border-radius:55% 45%;background:linear-gradient(120deg,#d79b56,#542a12);pointer-events:none;z-index:3;animation:scatter .65s ease-out forwards}
+.particle{position:absolute;width:11px;height:17px;border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 28% 18%,#e7b47b 0,#a86a3a 22%,#542a12 65%,#1b0a04 100%);box-shadow:inset 1px 1px 2px #f4cb9255,1px 2px 3px #0009;pointer-events:none;z-index:3;animation:scatter .65s ease-out forwards}
 @keyframes scatter{to{transform:translate(var(--x),var(--y)) rotate(500deg) scale(.3);opacity:0}}
-.rainbean{position:fixed;top:-35px;width:8px;height:13px;border-radius:55% 45%;background:linear-gradient(120deg,#d79b56,#542a12);z-index:30;pointer-events:none;animation:rain 3s linear forwards}
-@keyframes rain{to{transform:translateY(110dvh) rotate(720deg);opacity:.1}}
-@media(min-width:600px){.app{padding-top:25px}}
+.rainbean{position:fixed;top:-42px;width:12px;height:19px;border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 25% 17%,#e7b47b 0,#a86a3a 22%,#542a12 65%,#1b0a04 100%);box-shadow:inset 1px 1px 2px #f4cb9255,1px 2px 3px #0009;z-index:30;pointer-events:none;animation:rain 4s linear forwards}
+@keyframes rain{to{transform:translateY(110dvh) rotate(900deg);opacity:.1}}
+@media(max-height:720px){.bean-stage{height:clamp(115px,19dvh,145px)}.bean-button{height:clamp(110px,18dvh,135px)}.bean{height:clamp(100px,16dvh,120px)}.game{padding-top:8px;padding-bottom:9px}.stat{margin-top:7px}.statbox{padding:7px}}
+@media(min-width:600px){.app{padding-top:20px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header>
-  <div class="brand"><div class="logo">CIP</div><div><h1>CAFÉ CIP</h1><p>باشگاه مشتریان</p></div></div>
-  <div class="pill">قهوه • بازی • امتیاز</div>
+<div class="brand"><div class="logo">CIP</div><div><h1>CAFÉ CIP</h1><p>باشگاه مشتریان</p></div></div>
 </header>
 
 <section class="profile">
-  <div class="avatar" id="avatar">C</div>
-  <div class="profile-main">
-    <div class="name" id="playerName">مشتری CIP</div>
-    <div class="idline" id="playerId">Telegram ID: —</div>
-    <div class="level"><span>لول <b id="levelValue">۱</b></span><span class="discount" id="discountValue">تخفیف ۵٪</span></div>
-  </div>
-  <div class="pill" id="sacksValue">۱ گونی</div>
+<div class="avatar" id="avatar">C</div>
+<div class="profile-main">
+<div class="name" id="playerName">مشتری CIP</div>
+<div class="idline" id="playerId">Telegram ID: —</div>
+<div class="level"><span>لول <b id="levelValue">۱</b></span><span class="discount" id="discountValue">تخفیف ۵٪</span></div>
+</div>
 </section>
 
 <div class="stat">
-  <div class="statbox"><span>دانه‌های امروز</span><strong id="scoreValue">۰</strong></div>
-  <div class="statbox"><span>تارگت امروز</span><strong id="goalValue">۵۰۰</strong></div>
+<div class="statbox"><span>دانه‌های امروز</span><strong id="scoreValue">۰</strong></div>
+<div class="statbox"><span>تارگت امروز</span><strong id="goalValue">۵۰۰</strong></div>
 </div>
 
 <section class="game">
-  <div class="dayline"><span>روز فعالیت <strong id="dayValue">۱</strong></span><span id="gameStatus">آماده شروع</span></div>
-  <div class="bean-stage" id="beanStage">
-    <button class="bean-button" id="beanButton" aria-label="جمع کردن دانه قهوه"><span class="bean"></span></button>
-  </div>
-  <div class="bean-hint" id="beanHint">برای جمع کردن دانه، روی قهوه بزن</div>
-  <div class="progress-wrap">
-    <div class="progress-label"><span>پیشرفت تارگت</span><span id="progressText">۰٪</span></div>
-    <div class="progress"><div class="progress-in" id="progressBar"></div></div>
-  </div>
-  <button class="primary" id="consumeButton" hidden>☕ قهوه صرف شد</button>
-  <div class="note" id="gameNote">پس از تکمیل تارگت و ثبت مصرف، تارگت بعدی ۲۴ ساعت بعد باز می‌شود.</div>
-  <div class="lock-card" id="lockCard" hidden></div>
+<div class="dayline"><span>روز فعالیت <strong id="dayValue">۱</strong></span><span id="gameStatus">آماده شروع</span></div>
+<div class="bean-stage" id="beanStage">
+<button class="bean-button" id="beanButton" aria-label="جمع کردن دانه قهوه"><span class="bean"></span></button>
+</div>
+<div class="bean-hint" id="beanHint">برای جمع کردن دانه، روی قهوه بزن</div>
+<div class="progress-wrap">
+<div class="progress-label"><span>پیشرفت تارگت</span><span id="progressText">۰٪</span></div>
+<div class="progress"><div class="progress-in" id="progressBar"></div></div>
+</div>
+<button class="primary" id="consumeButton" hidden>☕ قهوه صرف شد</button>
+<div class="note" id="gameNote">پس از تکمیل تارگت و ثبت مصرف، تارگت بعدی ۲۴ ساعت بعد باز می‌شود.</div>
+<div class="lock-card" id="lockCard" hidden></div>
 </section>
 
 <div class="tabs">
-  <button class="tab active" data-tab="gamePanel">بازی</button>
-  <button class="tab" data-tab="invitePanel">دعوت دوستان</button>
+<button class="tab active" data-tab="gamePanel">بازی</button>
+<button class="tab" data-tab="invitePanel">دعوت دوستان</button>
 </div>
 
 <section class="panel active" id="gamePanel">
-  <h2>مسیر ارتقا</h2>
-  <div class="note" style="margin:0">روزهای ۱ تا ۵: گام‌های ابتدایی • روز ۳۰: دو گونی • روز ۱۸۰: شش گونی</div>
-  <div class="note">تخفیف لول ۱ تا ۴ به‌ترتیب ۵٪، ۱۰٪، ۱۵٪ و ۲۰٪ است؛ از لول ۵ به بعد ۳۰٪.</div>
+<h2>مسیر ارتقا</h2>
+<div class="note" style="margin:0">روزهای ۱ تا ۵: گام‌های ابتدایی • روز ۳۰: دو گونی • روز ۱۸۰: شش گونی</div>
+<div class="note">تخفیف لول ۱ تا ۴ به‌ترتیب ۵٪، ۱۰٪، ۱۵٪ و ۲۰٪ است؛ از لول ۵ به بعد ۳۰٪.</div>
 </section>
 
 <section class="panel" id="invitePanel">
-  <h2>دعوت دوستان</h2>
-  <p class="note">پس از عضویت دوست و تأیید ۵ روز فعالیت واقعی، یک قهوه رایگان برای دعوت‌کننده ثبت می‌شود.</p>
-  <div class="inviteurl" id="inviteLink">لینک دعوت پس از اتصال ربات نمایش داده می‌شود.</div>
-  <button class="secondary" id="copyInvite" style="width:100%;margin-top:9px">کپی لینک دعوت</button>
-  <div class="list" id="friendList"><div class="empty">فهرست دعوت‌ها پس از اتصال به سرور نمایش داده می‌شود.</div></div>
+<h2>دعوت دوستان</h2>
+<p class="note">پس از عضویت دوست و تأیید ۵ روز فعالیت واقعی، یک قهوه رایگان برای دعوت‌کننده ثبت می‌شود.</p>
+<div class="inviteurl" id="inviteLink">لینک دعوت پس از اتصال ربات نمایش داده می‌شود.</div>
+<button class="secondary" id="copyInvite" style="width:100%;margin-top:9px">کپی لینک دعوت</button>
+<div class="list" id="friendList"><div class="empty">فهرست دعوت‌ها پس از اتصال به سرور نمایش داده می‌شود.</div></div>
 </section>
-
 <footer>CAFÉ CIP · باشگاه مشتریان</footer>
 </div>
 
-<div class="modal show" id="nameModal">
-  <div class="modalbox">
-    <h2>به باشگاه CIP خوش اومدی ☕</h2>
-    <p>برای نمایش در پروفایل بازی، اسمت رو وارد کن.</p>
-    <input class="field" id="nameInput" maxlength="32" placeholder="نام نمایشی" autocomplete="nickname">
-    <button class="primary" id="saveName">ادامه</button>
-  </div>
+<div class="modal" id="nameModal">
+<div class="modalbox">
+<h2>به باشگاه CIP خوش اومدی ☕</h2>
+<p>برای نمایش در پروفایل بازی، اسمت رو وارد کن.</p>
+<input class="field" id="nameInput" maxlength="32" placeholder="نام نمایشی" autocomplete="nickname">
+<button class="primary" id="saveName">ادامه</button>
+</div>
 </div>
 
 <div class="modal" id="termsModal">
-  <div class="modalbox">
-    <h2>قوانین باشگاه مشتریان CIP</h2>
-    <ul>
-      <li>درصد تخفیف بر اساس لول است: لول ۱ تا ۴ به‌ترتیب ۵٪، ۱۰٪، ۱۵٪ و ۲۰٪؛ از لول ۵ به بعد ۳۰٪.</li>
-      <li>تخفیف فقط برای قهوه‌ها و نوشیدنی‌های قهوه‌ای است و هر مشتری روزی یک بار می‌تواند از آن استفاده کند.</li>
-      <li>جایزه دعوت فقط به دعوت‌کننده تعلق می‌گیرد: یک قهوه رایگان پس از عضویت دوست و تأیید پنج روز فعالیت او.</li>
-      <li>ثبت مصرف قهوه باید پس از مصرف واقعی انجام شود. تارگت بعدی ۲۴ ساعت پس از ثبت مصرف باز می‌شود.</li>
-    </ul>
-    <label class="accept"><input type="checkbox" id="acceptTerms"><span>قوانین را خوانده‌ام و می‌پذیرم.</span></label>
-    <button class="primary" id="confirmTerms" disabled>تأیید و ورود به بازی</button>
-  </div>
+<div class="modalbox">
+<h2>قوانین باشگاه مشتریان CIP</h2>
+<ul>
+<li>درصد تخفیف بر اساس لول است: لول ۱ تا ۴ به‌ترتیب ۵٪، ۱۰٪، ۱۵٪ و ۲۰٪؛ از لول ۵ به بعد ۳۰٪.</li>
+<li>تخفیف فقط برای قهوه‌ها و نوشیدنی‌های قهوه‌ای است و هر مشتری روزی یک بار می‌تواند از آن استفاده کند.</li>
+<li>جایزه دعوت فقط به دعوت‌کننده تعلق می‌گیرد: یک قهوه رایگان پس از عضویت دوست و تأیید پنج روز فعالیت او.</li>
+<li>ثبت مصرف قهوه باید پس از مصرف واقعی انجام شود. تارگت بعدی ۲۴ ساعت پس از ثبت مصرف باز می‌شود.</li>
+</ul>
+<label class="accept"><input type="checkbox" id="acceptTerms"><span>قوانین را خوانده‌ام و می‌پذیرم.</span></label>
+<button class="primary" id="confirmTerms" disabled>تأیید و ورود به بازی</button>
+</div>
 </div>
 <div class="toast" id="toast"></div>
 
@@ -173,13 +171,11 @@ footer{text-align:center;font-size:10px;color:#857462;margin:18px 0 4px}
 (()=>{
 const $=id=>document.getElementById(id);
 const tg=window.Telegram&&window.Telegram.WebApp;
-
 if(tg){
   tg.ready();
   tg.expand();
   try{tg.setHeaderColor('#100d0a');tg.setBackgroundColor('#100d0a')}catch(e){}
 }
-
 const STORAGE_KEY='cip_loyalty_game_v3';
 const TERMS_VERSION='cip-terms-2026-10-v1';
 const user=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user?tg.initDataUnsafe.user:null;
@@ -202,12 +198,12 @@ function load(){
   }catch(e){return{players:{}}}
 }
 
-let store=load(),data=store.players[telegramId];
+let store=load();
+let data=store.players[telegramId];
 const goals=[500,800,1100,1400,1700];
 const goalForDay=day=>goals[Math.min(Math.max(day,1),5)-1];
 const fmt=n=>Number(n||0).toLocaleString('fa-IR');
 const now=()=>Date.now();
-
 const levelForDay=day=>day>=180?10:day>=120?9:day>=90?8:day>=60?7:day>=30?6:Math.min(5,Math.max(1,day));
 const sacksForDay=day=>day>=180?6:day>=120?5:day>=90?4:day>=60?3:day>=30?2:1;
 const discountForLevel=level=>level>=5?30:level*5;
@@ -229,12 +225,16 @@ function toast(msg){
 
 function fmtTime(ms){
   const t=Math.max(0,Math.ceil(ms/1000));
-  const h=Math.floor(t/3600),m=Math.floor(t%3600/60),s=t%60;
-  return `${fmt(h)}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const h=Math.floor(t/3600);
+  const m=Math.floor(t%3600/60);
+  const s=t%60;
+  return `${fmt(h)}:${fmt(m).padStart(2,'۰')}:${fmt(s).padStart(2,'۰')}`;
 }
 
 function render(){
-  const level=levelForDay(data.day),locked=isLocked(),complete=targetComplete();
+  const level=levelForDay(data.day);
+  const locked=isLocked();
+  const complete=targetComplete();
   const pct=Math.min(100,data.score/goalForDay(data.day)*100);
 
   $('playerName').textContent=data.name||'مشتری CIP';
@@ -242,7 +242,6 @@ function render(){
   $('playerId').textContent='Telegram ID: '+(telegramId==='local-demo'?'نسخه آزمایشی':telegramId);
   $('levelValue').textContent=fmt(level);
   $('discountValue').textContent='تخفیف '+fmt(discountForLevel(level))+'٪';
-  $('sacksValue').textContent=fmt(sacksForDay(data.day))+' گونی';
   $('scoreValue').textContent=fmt(data.score);
   $('goalValue').textContent=fmt(goalForDay(data.day));
   $('dayValue').textContent=fmt(data.day);
@@ -253,9 +252,11 @@ function render(){
   $('consumeButton').hidden=!complete||locked;
   $('gameStatus').textContent=locked?'در انتظار بازشدن':complete?'تارگت تکمیل شد':'در حال بازی';
   $('beanHint').textContent=locked?'تا باز شدن تارگت بعدی صبر کن':complete?'تارگت کامل شد؛ پس از صرف قهوه ثبتش کن':'برای جمع کردن دانه، روی قهوه بزن';
-
   $('lockCard').hidden=!locked;
-  if(locked)$('lockCard').textContent='تارگت بعدی پس از '+fmtTime(nextUnlockAt()-now())+' فعال می‌شود.';
+
+  if(locked){
+    $('lockCard').textContent='تارگت بعدی پس از '+fmtTime(nextUnlockAt()-now())+' فعال می‌شود.';
+  }
 
   $('gameNote').textContent=complete&&!locked
     ?'پس از صرف قهوه، دکمه زیر را بزن تا چرخه بعدی شروع شود.'
@@ -270,8 +271,10 @@ function render(){
 }
 
 function scatter(){
-  const stage=$('beanStage'),rect=stage.getBoundingClientRect();
-  for(let i=0;i<9;i++){
+  const stage=$('beanStage');
+  const rect=stage.getBoundingClientRect();
+
+  for(let i=0;i<13;i++){
     const p=document.createElement('span');
     p.className='particle';
     p.style.left=(rect.width/2+(Math.random()*18-9))+'px';
@@ -287,16 +290,27 @@ function playPourSound(){
   try{
     const Ctx=window.AudioContext||window.webkitAudioContext;
     if(!Ctx)return;
-    const ctx=new Ctx(),dur=1.1,len=Math.floor(ctx.sampleRate*dur);
-    const buf=ctx.createBuffer(1,len,ctx.sampleRate),ch=buf.getChannelData(0);
-    for(let i=0;i<len;i++)ch[i]=(Math.random()*2-1)*Math.pow(1-i/len,1.8);
-    const src=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();
+    const ctx=new Ctx();
+    const dur=1.1;
+    const len=Math.floor(ctx.sampleRate*dur);
+    const buf=ctx.createBuffer(1,len,ctx.sampleRate);
+    const ch=buf.getChannelData(0);
+
+    for(let i=0;i<len;i++){
+      ch[i]=(Math.random()*2-1)*Math.pow(1-i/len,1.8);
+    }
+
+    const src=ctx.createBufferSource();
+    const filter=ctx.createBiquadFilter();
+    const gain=ctx.createGain();
+
     src.buffer=buf;
     filter.type='lowpass';
     filter.frequency.value=950;
     gain.gain.setValueAtTime(.001,ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(.18,ctx.currentTime+.08);
     gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);
+
     src.connect(filter);
     filter.connect(gain);
     gain.connect(ctx.destination);
@@ -306,14 +320,14 @@ function playPourSound(){
 }
 
 function coffeeRain(){
-  for(let i=0;i<65;i++){
+  for(let i=0;i<100;i++){
     const b=document.createElement('i');
     b.className='rainbean';
     b.style.left=Math.random()*100+'vw';
-    b.style.animationDelay=Math.random()*.6+'s';
-    b.style.animationDuration=(2.4+Math.random()*.6)+'s';
+    b.style.animationDelay=Math.random()*.45+'s';
+    b.style.animationDuration=(3.55+Math.random()*.45)+'s';
     document.body.appendChild(b);
-    setTimeout(()=>b.remove(),3800);
+    setTimeout(()=>b.remove(),4550);
   }
   playPourSound();
 }
@@ -339,16 +353,20 @@ $('consumeButton').addEventListener('click',()=>{
   toast('ثبت آزمایشی انجام شد؛ تارگت بعدی ۲۴ ساعت دیگر باز می‌شود.');
 });
 
-document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));
-}));
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));
+  });
+});
 
 $('copyInvite').addEventListener('click',async()=>{
   try{
     await navigator.clipboard.writeText($('inviteLink').textContent);
     toast('لینک دعوت کپی شد');
-  }catch(e){toast('کپی خودکار نشد؛ لینک را دستی کپی کن.')}
+  }catch(e){
+    toast('کپی خودکار نشد؛ لینک را دستی کپی کن.');
+  }
 });
 
 $('saveName').addEventListener('click',()=>{
@@ -376,9 +394,9 @@ $('confirmTerms').addEventListener('click',()=>{
 if(!data.name){
   $('nameInput').value=user?[user.first_name,user.last_name].filter(Boolean).join(' '):'';
   $('nameModal').classList.add('show');
-}else if(data.termsVersion!==TERMS_VERSION){
+}else{
   $('nameModal').classList.remove('show');
-  $('termsModal').classList.add('show');
+  if(data.termsVersion!==TERMS_VERSION)$('termsModal').classList.add('show');
 }
 
 render();
