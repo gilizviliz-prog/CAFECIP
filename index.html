@@ -1,406 +1,741 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#100d0a">
-<title>باشگاه مشتریان کافه CIP</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#100c09">
+<title>Café CIP | باشگاه مشتریان</title>
 <style>
-:root{--bg:#100d0a;--panel:#1b1510;--gold:#d8ad5b;--gold2:#f4d99c;--text:#f6eee2;--muted:#b8a895;--line:#473523}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif}
-body{background:radial-gradient(ellipse at 50% 5%,#302116 0,#17110c 42%,#100d0a 78%);min-height:100dvh}
+:root {
+  --bg:#100c09;
+  --panel:#1c1510;
+  --gold:#d9ad5b;
+  --gold2:#f5d99a;
+  --text:#f8eddb;
+  --muted:#ad9b85;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  background:radial-gradient(ellipse at 50% 38%,#382416 0%,#1a110b 43%,#0b0806 100%);
+  color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;
+  -webkit-tap-highlight-color:transparent;
+}
 button,input{font:inherit}
-button{cursor:pointer;border:0}
-button:focus,input:focus{outline:none}
-.app{max-width:520px;min-height:100dvh;margin:auto;padding:calc(7px + env(safe-area-inset-top)) 12px calc(8px + env(safe-area-inset-bottom));position:relative;overflow:hidden}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 2px 8px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:44px;height:44px;border:1px solid #99743c;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#3a2816,#17110c);color:var(--gold2);font-size:20px;font-weight:bold;box-shadow:inset 0 0 16px #000}
-.brand h1{font-size:18px;letter-spacing:1px;margin:0;color:var(--gold2)}
-.brand p{font-size:11px;margin:4px 0 0;color:var(--muted)}
-.profile{display:flex;align-items:center;gap:10px;padding:9px;background:linear-gradient(135deg,#261b11,#17120e);border:1px solid var(--line);border-radius:18px}
-.avatar{width:45px;height:45px;flex:0 0 45px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#e2bb69,#79501e);color:#1b1208;font-size:19px;font-weight:bold}
-.profile-main{flex:1;min-width:0}
-.name{font-size:14px;font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.idline{font-size:10px;color:var(--muted);margin-top:5px;direction:ltr;text-align:right;overflow-wrap:anywhere}
-.level{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:11px}
-.level b{color:var(--gold2)}
-.discount{background:#4a3519;border:1px solid #8d6a31;color:#ffe3a2;border-radius:999px;padding:4px 8px;font-weight:bold}
-.stat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:9px}
-.statbox{padding:9px;border-radius:15px;background:#1b1510;border:1px solid #3b2b1c}
-.statbox span{font-size:11px;color:var(--muted)}
-.statbox strong{display:block;margin-top:5px;font-size:19px;color:var(--gold2)}
-.game{margin-top:9px;border:1px solid var(--line);border-radius:22px;padding:11px 12px 12px;background:linear-gradient(160deg,#241a12,#15100c);text-align:center;position:relative;overflow:hidden}
-.dayline{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);gap:8px}
-.dayline strong{color:var(--gold2)}
-.bean-stage{height:clamp(145px,24dvh,190px);display:grid;place-items:center;position:relative;isolation:isolate}
-.bean-button{position:relative;width:135px;height:clamp(135px,21dvh,170px);background:transparent;display:grid;place-items:center;z-index:2;touch-action:manipulation}
-.bean{width:108px;height:clamp(120px,19dvh,148px);border-radius:58% 42% 58% 42% / 48% 42% 58% 52%;transform:rotate(36deg);background:radial-gradient(ellipse at 24% 17%,#e0a56c 0%,#a66a3c 13%,#71401f 30%,#482312 54%,#261006 77%,#100603 100%);box-shadow:inset 7px 5px 8px #ffe0ad77,inset -13px -17px 18px #000e,inset 2px -3px 5px #d08a4b55,0 20px 28px #000b,0 0 22px #b7783530;position:relative;border:1px solid #9a6032}
-.bean:before{content:"";position:absolute;top:5%;left:45%;height:90%;width:15px;border-radius:50%;background:linear-gradient(90deg,#100502 0%,#2b1208 24%,#714224 43%,#170904 62%,#080301 100%);transform:rotate(-8deg);box-shadow:2px 0 3px #e4a56b55,-2px 0 4px #000a}
-.bean:after{content:"";position:absolute;inset:8px 12px 12px 9px;border-radius:50%;border-left:3px solid #f3c18a66;border-top:1px solid #ffd9a044;filter:blur(.6px);box-shadow:inset 5px 0 7px #e2a46a20}
-.bean-button:active .bean{transform:rotate(36deg) scale(.93)}
-.bean-button:disabled{cursor:not-allowed;opacity:.8}
-.bean-hint{font-size:11px;color:var(--muted);margin-top:-2px}
-.progress-wrap{margin-top:10px}
-.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:7px}
-.progress{height:9px;border-radius:999px;background:#080706;border:1px solid #4b3722;overflow:hidden}
-.progress-in{height:100%;width:0;background:linear-gradient(90deg,#8c5b21,#f1d48e);border-radius:999px;transition:width .25s}
-.primary{width:100%;border-radius:13px;padding:12px;margin-top:11px;background:linear-gradient(135deg,#f0d18c,#b88232);color:#21160a;font-weight:bold;box-shadow:0 6px 18px #0005}
-.primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
-.secondary{border:1px solid #75572e;color:var(--gold2);background:#241a11;border-radius:12px;padding:11px 12px}
-.note{font-size:10px;line-height:1.8;color:var(--muted);margin-top:8px}
-.lock-card{margin-top:10px;padding:11px;border:1px solid #5a4325;background:#241a10;border-radius:14px;line-height:1.8;font-size:12px;color:#ead7b6}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.tab{padding:10px;border:1px solid var(--line);border-radius:12px;background:#17110c;color:var(--muted)}
-.tab.active{background:#392817;color:var(--gold2);border-color:#94713b}
-.panel{display:none;margin-top:10px;padding:13px;border:1px solid var(--line);border-radius:18px;background:#1b1510}
-.panel.active{display:block}
-.panel h2{font-size:15px;margin:0 0 8px;color:var(--gold2)}
-.inviteurl{direction:ltr;overflow-wrap:anywhere;padding:11px;border-radius:10px;background:#0e0b08;border:1px solid var(--line);font-size:11px;color:#ddc69f}
-.list{display:grid;gap:8px;margin-top:12px}
-.friend{display:flex;gap:10px;align-items:center;padding:10px;background:#251b12;border-radius:12px}
-.friend .avatar{width:35px;height:35px;flex-basis:35px;font-size:14px}
-.friendinfo{flex:1;min-width:0}
-.friendinfo strong{display:block;font-size:12px}
-.friendinfo small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
-.empty{font-size:12px;line-height:1.8;color:var(--muted);padding:12px 0}
-footer{text-align:center;font-size:10px;color:#857462;margin:12px 0 4px}
-.modal{position:fixed;inset:0;z-index:20;background:#000c;display:none;align-items:center;justify-content:center;padding:20px}
-.modal.show{display:flex}
-.modalbox{width:min(100%,430px);max-height:88dvh;overflow:auto;background:#1b1510;border:1px solid #876630;border-radius:20px;padding:20px;box-shadow:0 18px 60px #000b}
-.modalbox h2{margin:0 0 10px;color:var(--gold2);font-size:18px}
-.modalbox p,.modalbox li{font-size:12px;line-height:2;color:#e1d2bd}
-.modalbox ul{padding-right:20px}
-.field{width:100%;padding:13px;border-radius:11px;background:#0f0c09;color:#fff;border:1px solid #5a4228;margin-top:8px}
-.accept{display:flex;align-items:flex-start;gap:9px;font-size:12px;line-height:1.8;color:#e7d7c0;margin-top:14px}
-.accept input{margin-top:5px;accent-color:#d8ad5b}
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:40;padding:11px 16px;border-radius:999px;background:#f0d18c;color:#21160a;font-size:12px;font-weight:bold;transition:.25s;max-width:90%;text-align:center}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.particle{position:absolute;width:11px;height:17px;border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 28% 18%,#e7b47b 0,#a86a3a 22%,#542a12 65%,#1b0a04 100%);box-shadow:inset 1px 1px 2px #f4cb9255,1px 2px 3px #0009;pointer-events:none;z-index:3;animation:scatter .65s ease-out forwards}
-@keyframes scatter{to{transform:translate(var(--x),var(--y)) rotate(500deg) scale(.3);opacity:0}}
-.rainbean{position:fixed;top:-42px;width:12px;height:19px;border-radius:55% 45% 48% 52%;background:radial-gradient(ellipse at 25% 17%,#e7b47b 0,#a86a3a 22%,#542a12 65%,#1b0a04 100%);box-shadow:inset 1px 1px 2px #f4cb9255,1px 2px 3px #0009;z-index:30;pointer-events:none;animation:rain 4s linear forwards}
-@keyframes rain{to{transform:translateY(110dvh) rotate(900deg);opacity:.1}}
-@media(max-height:720px){.bean-stage{height:clamp(115px,19dvh,145px)}.bean-button{height:clamp(110px,18dvh,135px)}.bean{height:clamp(100px,16dvh,120px)}.game{padding-top:8px;padding-bottom:9px}.stat{margin-top:7px}.statbox{padding:7px}}
-@media(min-width:600px){.app{padding-top:20px}}
+button{cursor:pointer}
+.app{
+  height:100dvh;
+  width:100%;
+  max-width:520px;
+  margin:auto;
+  padding:12px 16px max(10px,env(safe-area-inset-bottom));
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  position:relative;
+  overflow:hidden;
+}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-shrink:0;
+}
+.brand{display:flex;align-items:center;gap:9px}
+.logo{
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid #d9ad5b99;
+  display:grid;place-items:center;
+  color:var(--gold2);font-size:22px;
+  background:linear-gradient(145deg,#352317,#100b07);
+  box-shadow:0 0 18px #d9ad5b16;
+}
+.brand-name{font-size:19px;font-weight:900;letter-spacing:1px}
+.brand-sub{font-size:10px;color:var(--muted);margin-top:3px}
+.profile{
+  display:flex;align-items:center;gap:8px;
+  min-width:0;max-width:57%;
+}
+.avatar{
+  width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;flex-shrink:0;
+  color:#27190b;background:linear-gradient(135deg,#f6d99b,#a86e29);
+  font-size:18px;font-weight:bold;
+}
+.profile-info{min-width:0}
+.profile-name{font-size:12px;font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.profile-level{font-size:10px;color:var(--gold2);margin-top:4px}
+.panel{
+  background:linear-gradient(145deg,#261a11ed,#17100bed);
+  border:1px solid #b88a493d;
+  border-radius:17px;
+  box-shadow:0 9px 25px #0003,inset 0 1px #ffffff06;
+}
+.stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  flex-shrink:0;
+}
+.stat{padding:10px 12px}
+.stat-label{font-size:10px;color:var(--muted)}
+.stat-value{font-size:18px;font-weight:900;color:var(--gold2);margin-top:5px}
+.stat-value small{font-size:11px;font-weight:normal;color:var(--muted)}
+.progress-card{padding:11px 13px;flex-shrink:0}
+.progress-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.progress-title{font-size:12px;font-weight:bold}
+.progress-numbers{font-size:11px;color:var(--gold2);direction:ltr}
+.progress-track{
+  height:8px;background:#080605;border-radius:10px;
+  margin-top:10px;overflow:hidden;border:1px solid #ffffff08;
+}
+.progress-fill{
+  height:100%;width:0;border-radius:10px;
+  background:linear-gradient(90deg,#8d5b24,#f4d38c,#b57a32);
+  transition:width .18s ease;
+  box-shadow:0 0 10px #d9ad5b55;
+}
+.target-note{font-size:10px;color:var(--muted);margin-top:7px}
+.bean-area{
+  flex:1;min-height:160px;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  overflow:visible;
+}
+.bean-button{
+  position:relative;
+  width:min(100%,330px);
+  height:100%;
+  min-height:160px;
+  max-height:290px;
+  border:1px solid #d9ad5b35;
+  border-radius:24px;
+  background:
+    radial-gradient(ellipse at 50% 45%,#4b2e18a0 0%,#21150e7a 45%,#100b08a8 100%);
+  box-shadow:inset 0 0 35px #0005,0 0 25px #d9ad5b08;
+  display:grid;place-items:center;
+  overflow:hidden;
+  touch-action:manipulation;
+  user-select:none;
+  -webkit-user-select:none;
+  outline:none;
+}
+.bean-button::before{
+  content:"";position:absolute;width:190px;height:190px;border-radius:50%;
+  background:radial-gradient(circle,#d9ad5b13,transparent 70%);
+  pointer-events:none;
+}
+.bean{
+  --rx:0deg;--ry:0deg;--tx:0px;--ty:0px;
+  position:relative;width:100px;height:145px;
+  border-radius:54% 46% 49% 51% / 43% 44% 56% 57%;
+  transform:translate(var(--tx),var(--ty)) rotateX(var(--rx)) rotateY(var(--ry)) rotate(-35deg);
+  transform-style:preserve-3d;
+  background:
+    radial-gradient(ellipse at 28% 18%,#ffffffbb 0%,#e4c08a 2%,transparent 12%),
+    radial-gradient(ellipse at 31% 24%,#a16a36 0%,#6e401e 18%,transparent 38%),
+    radial-gradient(ellipse at 66% 73%,#0c0604 0%,#281307 26%,transparent 52%),
+    linear-gradient(112deg,#120905 0%,#4a260f 18%,#a36a32 31%,#42200c 46%,#170a04 60%,#713d18 78%,#1a0b05 100%);
+  border:1px solid #b9854d88;
+  box-shadow:
+    inset 5px 3px 8px #f1d1a342,
+    inset -9px -9px 15px #000b,
+    8px 13px 20px #0008,
+    0 0 20px #d9ad5b20;
+  transition:transform 120ms ease-out,filter 120ms ease-out;
+  filter:brightness(1.12) contrast(1.12);
+}
+.bean::before{
+  content:"";position:absolute;
+  left:47%;top:8%;height:84%;width:8px;
+  border-radius:50%;
+  transform:rotate(8deg);
+  background:linear-gradient(90deg,#100603,#291308,#080402);
+  box-shadow:1px 0 2px #c08a4a7a,-1px 0 2px #000;
+}
+.bean::after{
+  content:"";position:absolute;
+  width:55%;height:20%;top:12%;left:14%;
+  border-radius:50%;
+  background:linear-gradient(180deg,#fff8d988,#e5ae5b11);
+  filter:blur(5px);transform:rotate(-25deg);
+}
+.tap-label{
+  position:absolute;bottom:15px;font-size:11px;color:#e6c992a8;
+  pointer-events:none;
+}
+.bean-button:active .bean{filter:brightness(1.28)}
+.bottom-area{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
+.primary{
+  width:100%;border:0;border-radius:14px;padding:14px 12px;
+  color:#211306;font-weight:900;font-size:14px;
+  background:linear-gradient(110deg,#b77a30,#f3d591,#c28a3d);
+  box-shadow:0 5px 18px #b77a3020;
+}
+.primary:disabled{filter:grayscale(.5);opacity:.55;cursor:not-allowed}
+.secondary{
+  width:100%;border:1px solid #b88a4955;border-radius:13px;
+  padding:11px;background:#1c140e;color:var(--gold2);font-size:12px;
+}
+.footnote{text-align:center;color:#9d8a73;font-size:9px;padding-bottom:2px}
+.rain-layer{
+  position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20;
+}
+.rain-bean{
+  position:absolute;top:-55px;border-radius:52% 48% 48% 52%;
+  width:15px;height:23px;
+  box-shadow:inset 2px 1px 3px #ffffff6b,inset -3px -3px 5px #0008,0 4px 7px #0007;
+  animation:bean-fall 4s linear forwards;
+}
+.rain-bean::after{
+  content:"";position:absolute;left:48%;top:12%;height:76%;width:2px;
+  background:#291508a8;border-radius:50%;transform:rotate(10deg);
+}
+@keyframes bean-fall{
+  0%{transform:translate3d(0,-5vh,0) rotate(0deg);opacity:0}
+  8%{opacity:1}
+  50%{transform:translate3d(var(--drift),55vh,0) rotate(390deg)}
+  100%{transform:translate3d(calc(var(--drift) * -.6),110vh,0) rotate(800deg);opacity:.95}
+}
+.particle{
+  position:absolute;width:9px;height:14px;border-radius:50%;
+  pointer-events:none;z-index:5;
+  background:linear-gradient(110deg,#f4d59b,#71401b 45%,#160a04);
+  box-shadow:inset 1px 1px 2px #fff8;
+  animation:scatter .48s ease-out forwards;
+}
+@keyframes scatter{
+  to{transform:translate(var(--x),var(--y)) rotate(300deg) scale(.25);opacity:0}
+}
+.modal-backdrop{
+  position:fixed;inset:0;background:#000c;z-index:40;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.modal{
+  width:100%;max-width:390px;max-height:85dvh;overflow:auto;
+  border-radius:20px;padding:20px;
+  background:linear-gradient(145deg,#291c12,#110c08);
+  border:1px solid #d9ad5b77;
+  box-shadow:0 20px 80px #0009;
+}
+.modal h2{font-size:18px;color:var(--gold2);margin:0 0 12px}
+.modal p,.modal li{font-size:12px;line-height:2;color:#d5c4ad}
+.modal input{
+  width:100%;padding:13px;border-radius:11px;
+  background:#100b07;color:white;border:1px solid #806039;margin:10px 0;
+}
+.checkrow{display:flex;align-items:flex-start;gap:8px;font-size:11px;line-height:1.8;margin:12px 0}
+.checkrow input{width:auto;margin:3px 0 0}
+.hidden{display:none!important}
+#toast{
+  position:fixed;z-index:60;bottom:20px;left:50%;
+  transform:translateX(-50%);background:#2a1d12;
+  border:1px solid #d9ad5b66;color:#f5d99a;
+  padding:11px 15px;border-radius:12px;font-size:12px;
+  max-width:90%;text-align:center;display:none;
+}
+@media(max-height:690px){
+ .app{padding-top:7px;gap:6px}
+ .logo{width:34px;height:34px;font-size:18px}
+ .brand-name{font-size:16px}
+ .stat{padding:7px 10px}
+ .stat-value{font-size:16px;margin-top:3px}
+ .progress-card{padding:8px 11px}
+ .bean-area{min-height:130px}
+ .bean-button{min-height:130px}
+ .bean{width:75px;height:110px}
+ .primary{padding:11px}
+ .secondary{padding:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .rain-bean,.particle{animation-duration:1ms}
+}
 </style>
 </head>
 <body>
 <div class="app">
-<header>
-<div class="brand"><div class="logo">CIP</div><div><h1>CAFÉ CIP</h1><p>باشگاه مشتریان</p></div></div>
-</header>
+  <header>
+    <div class="brand">
+      <div class="logo">☕</div>
+      <div>
+        <div class="brand-name">CAFÉ CIP</div>
+        <div class="brand-sub">باشگاه مشتریان</div>
+      </div>
+    </div>
+    <div class="profile">
+      <div class="avatar" id="avatar">C</div>
+      <div class="profile-info">
+        <div class="profile-name" id="playerName">عضو کافه CIP</div>
+        <div class="profile-level" id="levelLabel">سطح ۱ · تخفیف ۵٪</div>
+      </div>
+    </div>
+  </header>
 
-<section class="profile">
-<div class="avatar" id="avatar">C</div>
-<div class="profile-main">
-<div class="name" id="playerName">مشتری CIP</div>
-<div class="idline" id="playerId">Telegram ID: —</div>
-<div class="level"><span>لول <b id="levelValue">۱</b></span><span class="discount" id="discountValue">تخفیف ۵٪</span></div>
-</div>
-</section>
+  <section class="stats">
+    <div class="panel stat">
+      <div class="stat-label">دانه‌های امروز</div>
+      <div class="stat-value"><span id="score">۰</span> <small>دانه</small></div>
+    </div>
+    <div class="panel stat">
+      <div class="stat-label">هدف امروز</div>
+      <div class="stat-value"><span id="target">۵۰۰</span> <small>دانه</small></div>
+    </div>
+  </section>
 
-<div class="stat">
-<div class="statbox"><span>دانه‌های امروز</span><strong id="scoreValue">۰</strong></div>
-<div class="statbox"><span>تارگت امروز</span><strong id="goalValue">۵۰۰</strong></div>
-</div>
+  <section class="panel progress-card">
+    <div class="progress-heading">
+      <div class="progress-title" id="dayLabel">روز اول باشگاه</div>
+      <div class="progress-numbers"><span id="progressText">۰ / ۵۰۰</span></div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="target-note" id="statusText">برای جمع‌آوری دانه‌ها روی دانه قهوه بزن.</div>
+  </section>
 
-<section class="game">
-<div class="dayline"><span>روز فعالیت <strong id="dayValue">۱</strong></span><span id="gameStatus">آماده شروع</span></div>
-<div class="bean-stage" id="beanStage">
-<button class="bean-button" id="beanButton" aria-label="جمع کردن دانه قهوه"><span class="bean"></span></button>
-</div>
-<div class="bean-hint" id="beanHint">برای جمع کردن دانه، روی قهوه بزن</div>
-<div class="progress-wrap">
-<div class="progress-label"><span>پیشرفت تارگت</span><span id="progressText">۰٪</span></div>
-<div class="progress"><div class="progress-in" id="progressBar"></div></div>
-</div>
-<button class="primary" id="consumeButton" hidden>☕ قهوه صرف شد</button>
-<div class="note" id="gameNote">پس از تکمیل تارگت و ثبت مصرف، تارگت بعدی ۲۴ ساعت بعد باز می‌شود.</div>
-<div class="lock-card" id="lockCard" hidden></div>
-</section>
+  <main class="bean-area">
+    <button class="bean-button" id="beanButton" aria-label="جمع‌آوری دانه قهوه">
+      <div class="bean" id="mainBean"></div>
+      <div class="tap-label">برای جمع‌آوری دانه لمس کن</div>
+    </button>
+  </main>
 
-<div class="tabs">
-<button class="tab active" data-tab="gamePanel">بازی</button>
-<button class="tab" data-tab="invitePanel">دعوت دوستان</button>
-</div>
-
-<section class="panel active" id="gamePanel">
-<h2>مسیر ارتقا</h2>
-<div class="note" style="margin:0">روزهای ۱ تا ۵: گام‌های ابتدایی • روز ۳۰: دو گونی • روز ۱۸۰: شش گونی</div>
-<div class="note">تخفیف لول ۱ تا ۴ به‌ترتیب ۵٪، ۱۰٪، ۱۵٪ و ۲۰٪ است؛ از لول ۵ به بعد ۳۰٪.</div>
-</section>
-
-<section class="panel" id="invitePanel">
-<h2>دعوت دوستان</h2>
-<p class="note">پس از عضویت دوست و تأیید ۵ روز فعالیت واقعی، یک قهوه رایگان برای دعوت‌کننده ثبت می‌شود.</p>
-<div class="inviteurl" id="inviteLink">لینک دعوت پس از اتصال ربات نمایش داده می‌شود.</div>
-<button class="secondary" id="copyInvite" style="width:100%;margin-top:9px">کپی لینک دعوت</button>
-<div class="list" id="friendList"><div class="empty">فهرست دعوت‌ها پس از اتصال به سرور نمایش داده می‌شود.</div></div>
-</section>
-<footer>CAFÉ CIP · باشگاه مشتریان</footer>
+  <div class="bottom-area">
+    <button class="primary" id="consumeButton">☕ قهوه صرف شد</button>
+    <button class="secondary" id="inviteButton">دعوت دوستان</button>
+    <div class="footnote">Café CIP · قهوه خوب، روز خوب</div>
+  </div>
 </div>
 
-<div class="modal" id="nameModal">
-<div class="modalbox">
-<h2>به باشگاه CIP خوش اومدی ☕</h2>
-<p>برای نمایش در پروفایل بازی، اسمت رو وارد کن.</p>
-<input class="field" id="nameInput" maxlength="32" placeholder="نام نمایشی" autocomplete="nickname">
-<button class="primary" id="saveName">ادامه</button>
-</div>
+<div class="rain-layer" id="rainLayer"></div>
+<div id="toast"></div>
+
+<div class="modal-backdrop hidden" id="nameModal">
+  <div class="modal">
+    <h2>به باشگاه CIP خوش آمدی ☕</h2>
+    <p>برای شروع، نام نمایشی خودت را وارد کن.</p>
+    <input id="nameInput" maxlength="40" placeholder="نام شما">
+    <button class="primary" id="saveName">شروع بازی</button>
+  </div>
 </div>
 
-<div class="modal" id="termsModal">
-<div class="modalbox">
-<h2>قوانین باشگاه مشتریان CIP</h2>
-<ul>
-<li>درصد تخفیف بر اساس لول است: لول ۱ تا ۴ به‌ترتیب ۵٪، ۱۰٪، ۱۵٪ و ۲۰٪؛ از لول ۵ به بعد ۳۰٪.</li>
-<li>تخفیف فقط برای قهوه‌ها و نوشیدنی‌های قهوه‌ای است و هر مشتری روزی یک بار می‌تواند از آن استفاده کند.</li>
-<li>جایزه دعوت فقط به دعوت‌کننده تعلق می‌گیرد: یک قهوه رایگان پس از عضویت دوست و تأیید پنج روز فعالیت او.</li>
-<li>ثبت مصرف قهوه باید پس از مصرف واقعی انجام شود. تارگت بعدی ۲۴ ساعت پس از ثبت مصرف باز می‌شود.</li>
-</ul>
-<label class="accept"><input type="checkbox" id="acceptTerms"><span>قوانین را خوانده‌ام و می‌پذیرم.</span></label>
-<button class="primary" id="confirmTerms" disabled>تأیید و ورود به بازی</button>
+<div class="modal-backdrop hidden" id="termsModal">
+  <div class="modal">
+    <h2>قوانین باشگاه مشتریان CIP</h2>
+    <ul>
+      <li>هر لمس معتبر، یک دانه به امتیاز روزانه اضافه می‌کند.</li>
+      <li>هدف روزانه بر اساس روز عضویت تعیین می‌شود.</li>
+      <li>پس از صرف واقعی قهوه و ثبت آن، هدف بعدی ۲۴ ساعت بعد باز می‌شود.</li>
+      <li>تخفیف بر اساس سطح عضویت است و روزی یک بار قابل استفاده است.</li>
+      <li>تخفیف شامل قهوه‌ها و نوشیدنی‌های قهوه‌ای می‌شود.</li>
+      <li>جایزه دعوت فقط برای دعوت‌کننده است؛ پس از تکمیل عضویت و ۵ روز فعالیت تأییدشده دوست دعوت‌شده.</li>
+    </ul>
+    <label class="checkrow">
+      <input type="checkbox" id="acceptTerms">
+      <span>قوانین را خوانده‌ام و می‌پذیرم.</span>
+    </label>
+    <button class="primary" id="acceptButton">تأیید و ادامه</button>
+  </div>
 </div>
+
+<div class="modal-backdrop hidden" id="inviteModal">
+  <div class="modal">
+    <h2>دعوت دوستان</h2>
+    <p>لینک دعوت اختصاصی شما:</p>
+    <input id="inviteLink" readonly>
+    <button class="primary" id="copyInvite">کپی لینک دعوت</button>
+    <p>فهرست دعوت‌شده‌ها و ثبت دریافت قهوه رایگان در این نسخه هنوز به سرور متصل نیست.</p>
+    <button class="secondary" id="closeInvite">بستن</button>
+  </div>
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
-(()=>{
-const $=id=>document.getElementById(id);
-const tg=window.Telegram&&window.Telegram.WebApp;
-if(tg){
-  tg.ready();
-  tg.expand();
-  try{tg.setHeaderColor('#100d0a');tg.setBackgroundColor('#100d0a')}catch(e){}
-}
-const STORAGE_KEY='cip_loyalty_game_v3';
-const TERMS_VERSION='cip-terms-2026-10-v1';
-const user=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user?tg.initDataUnsafe.user:null;
-const telegramId=user&&user.id?String(user.id):'local-demo';
-const botUsername='YOUR_BOT_USERNAME';
-const startParam=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.start_param?tg.initDataUnsafe.start_param:'';
+(() => {
+  'use strict';
 
-function load(){
-  try{
-    const d=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-    if(!d.players)d.players={};
-    if(!d.players[telegramId]){
-      d.players[telegramId]={
-        name:user?[user.first_name,user.last_name].filter(Boolean).join(' '):'',
-        day:1,score:0,lastConsumeAt:0,termsVersion:'',
-        invitedBy:startParam.startsWith('ref_')?startParam.slice(4):''
-      };
+  const $ = id => document.getElementById(id);
+  const tg = window.Telegram && window.Telegram.WebApp
+    ? window.Telegram.WebApp : null;
+
+  if (tg) {
+    tg.ready();
+    tg.expand();
+  }
+
+  const user = tg && tg.initDataUnsafe && tg.initDataUnsafe.user
+    ? tg.initDataUnsafe.user : null;
+
+  const telegramId = user && user.id ? String(user.id) : 'local-demo';
+  const TERMS_VERSION = 'cip-terms-2026-10-v1';
+  const STORAGE_KEY = 'cip_loyalty_game_v3_' + telegramId;
+  const botUsername = 'YOUR_BOT_USERNAME';
+
+  const goals = [500, 800, 1100, 1400, 1700];
+  const now = () => Date.now();
+  const fa = n => Math.max(0, Math.floor(n)).toLocaleString('fa-IR');
+
+  function levelForDay(day) {
+    if (day >= 180) return 10;
+    if (day >= 120) return 9;
+    if (day >= 90) return 8;
+    if (day >= 60) return 7;
+    if (day >= 30) return 6;
+    return Math.min(5, Math.max(1, day));
+  }
+
+  function goalForDay(day) {
+    return goals[Math.min(Math.max(day, 1), 5) - 1];
+  }
+
+  function discountForLevel(level) {
+    return level >= 5 ? 30 : level * 5;
+  }
+
+  function freshData() {
+    return {
+      name: user
+        ? [user.first_name, user.last_name].filter(Boolean).join(' ')
+        : '',
+      day: 1,
+      score: 0,
+      lastConsumeAt: 0,
+      termsVersion: '',
+      invitedBy: tg && tg.initDataUnsafe &&
+        tg.initDataUnsafe.start_param &&
+        tg.initDataUnsafe.start_param.startsWith('ref_')
+          ? tg.initDataUnsafe.start_param.slice(4) : ''
+    };
+  }
+
+  function loadData() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return freshData();
+      return Object.assign(freshData(), JSON.parse(saved));
+    } catch (e) {
+      return freshData();
     }
-    return d;
-  }catch(e){return{players:{}}}
-}
-
-let store=load();
-let data=store.players[telegramId];
-const goals=[500,800,1100,1400,1700];
-const goalForDay=day=>goals[Math.min(Math.max(day,1),5)-1];
-const fmt=n=>Number(n||0).toLocaleString('fa-IR');
-const now=()=>Date.now();
-const levelForDay=day=>day>=180?10:day>=120?9:day>=90?8:day>=60?7:day>=30?6:Math.min(5,Math.max(1,day));
-const sacksForDay=day=>day>=180?6:day>=120?5:day>=90?4:day>=60?3:day>=30?2:1;
-const discountForLevel=level=>level>=5?30:level*5;
-const nextUnlockAt=()=>Number(data.lastConsumeAt||0)+86400000;
-const isLocked=()=>!!data.lastConsumeAt&&now()<nextUnlockAt();
-const targetComplete=()=>data.score>=goalForDay(data.day);
-
-function save(){
-  store.players[telegramId]=data;
-  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(store))}catch(e){}
-}
-
-function toast(msg){
-  const el=$('toast');
-  el.textContent=msg;
-  el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2400);
-}
-
-function fmtTime(ms){
-  const t=Math.max(0,Math.ceil(ms/1000));
-  const h=Math.floor(t/3600);
-  const m=Math.floor(t%3600/60);
-  const s=t%60;
-  return `${fmt(h)}:${fmt(m).padStart(2,'۰')}:${fmt(s).padStart(2,'۰')}`;
-}
-
-function render(){
-  const level=levelForDay(data.day);
-  const locked=isLocked();
-  const complete=targetComplete();
-  const pct=Math.min(100,data.score/goalForDay(data.day)*100);
-
-  $('playerName').textContent=data.name||'مشتری CIP';
-  $('avatar').textContent=(data.name||'C').trim().charAt(0).toUpperCase();
-  $('playerId').textContent='Telegram ID: '+(telegramId==='local-demo'?'نسخه آزمایشی':telegramId);
-  $('levelValue').textContent=fmt(level);
-  $('discountValue').textContent='تخفیف '+fmt(discountForLevel(level))+'٪';
-  $('scoreValue').textContent=fmt(data.score);
-  $('goalValue').textContent=fmt(goalForDay(data.day));
-  $('dayValue').textContent=fmt(data.day);
-  $('progressBar').style.width=pct+'%';
-  $('progressText').textContent=fmt(Math.floor(pct))+'٪';
-
-  $('beanButton').disabled=locked||complete;
-  $('consumeButton').hidden=!complete||locked;
-  $('gameStatus').textContent=locked?'در انتظار بازشدن':complete?'تارگت تکمیل شد':'در حال بازی';
-  $('beanHint').textContent=locked?'تا باز شدن تارگت بعدی صبر کن':complete?'تارگت کامل شد؛ پس از صرف قهوه ثبتش کن':'برای جمع کردن دانه، روی قهوه بزن';
-  $('lockCard').hidden=!locked;
-
-  if(locked){
-    $('lockCard').textContent='تارگت بعدی پس از '+fmtTime(nextUnlockAt()-now())+' فعال می‌شود.';
   }
 
-  $('gameNote').textContent=complete&&!locked
-    ?'پس از صرف قهوه، دکمه زیر را بزن تا چرخه بعدی شروع شود.'
-    :'پس از تکمیل تارگت و ثبت مصرف، تارگت بعدی ۲۴ ساعت بعد باز می‌شود.';
+  let data = loadData();
+  let toastTimer;
+  let timerInterval;
 
-  const url=botUsername!=='YOUR_BOT_USERNAME'
-    ?`https://t.me/${botUsername}?start=ref_${encodeURIComponent(telegramId)}`
-    :'ابتدا YOUR_BOT_USERNAME را در کد با نام کاربری ربات جایگزین کنید.';
-
-  $('inviteLink').textContent=url;
-  $('copyInvite').disabled=botUsername==='YOUR_BOT_USERNAME';
-}
-
-function scatter(){
-  const stage=$('beanStage');
-  const rect=stage.getBoundingClientRect();
-
-  for(let i=0;i<13;i++){
-    const p=document.createElement('span');
-    p.className='particle';
-    p.style.left=(rect.width/2+(Math.random()*18-9))+'px';
-    p.style.top=(rect.height/2+15)+'px';
-    p.style.setProperty('--x',(Math.random()*150-75)+'px');
-    p.style.setProperty('--y',(Math.random()*150-75)+'px');
-    stage.appendChild(p);
-    setTimeout(()=>p.remove(),700);
+  function saveData() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      showToast('ذخیره‌سازی مرورگر در دسترس نیست.');
+    }
   }
-}
 
-function playPourSound(){
-  try{
-    const Ctx=window.AudioContext||window.webkitAudioContext;
-    if(!Ctx)return;
-    const ctx=new Ctx();
-    const dur=1.1;
-    const len=Math.floor(ctx.sampleRate*dur);
-    const buf=ctx.createBuffer(1,len,ctx.sampleRate);
-    const ch=buf.getChannelData(0);
+  function showToast(message) {
+    const el = $('toast');
+    el.textContent = message;
+    el.style.display = 'block';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.style.display = 'none', 2600);
+  }
 
-    for(let i=0;i<len;i++){
-      ch[i]=(Math.random()*2-1)*Math.pow(1-i/len,1.8);
+  function isLocked() {
+    return !!data.lastConsumeAt &&
+      now() < Number(data.lastConsumeAt) + 86400000;
+  }
+
+  function remainingTime() {
+    return Math.max(0, Number(data.lastConsumeAt || 0) +
+      86400000 - now());
+  }
+
+  function fmtTime(ms) {
+    const seconds = Math.ceil(Math.max(0, ms) / 1000);
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return [h,m,s].map(v => String(v).padStart(2,'0'))
+      .map(v => v.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[Number(d)]))
+      .join(':');
+  }
+
+  function render() {
+    const level = levelForDay(data.day);
+    const goal = goalForDay(data.day);
+    const score = Math.min(data.score, goal);
+    const locked = isLocked();
+    const complete = score >= goal;
+
+    $('playerName').textContent = data.name || 'عضو کافه CIP';
+    $('avatar').textContent = (data.name || 'C').trim().charAt(0).toUpperCase();
+    $('levelLabel').textContent =
+      `سطح ${fa(level)} · تخفیف ${fa(discountForLevel(level))}٪`;
+    $('score').textContent = fa(score);
+    $('target').textContent = fa(goal);
+    $('dayLabel').textContent = `روز ${fa(data.day)} باشگاه`;
+    $('progressText').textContent = `${fa(score)} / ${fa(goal)}`;
+    $('progressFill').style.width =
+      `${Math.min(100, score / goal * 100)}%`;
+
+    if (locked) {
+      $('statusText').textContent =
+        `هدف بعدی تا ${fmtTime(remainingTime())} دیگر باز می‌شود.`;
+    } else if (complete) {
+      $('statusText').textContent =
+        'هدف کامل شد؛ پس از صرف واقعی قهوه، دکمه را بزن.';
+    } else {
+      $('statusText').textContent =
+        'برای جمع‌آوری دانه‌ها روی دانه قهوه بزن.';
     }
 
-    const src=ctx.createBufferSource();
-    const filter=ctx.createBiquadFilter();
-    const gain=ctx.createGain();
-
-    src.buffer=buf;
-    filter.type='lowpass';
-    filter.frequency.value=950;
-    gain.gain.setValueAtTime(.001,ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(.18,ctx.currentTime+.08);
-    gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);
-
-    src.connect(filter);
-    filter.connect(gain);
-    gain.connect(ctx.destination);
-    src.start();
-    src.onended=()=>ctx.close();
-  }catch(e){}
-}
-
-function coffeeRain(){
-  for(let i=0;i<100;i++){
-    const b=document.createElement('i');
-    b.className='rainbean';
-    b.style.left=Math.random()*100+'vw';
-    b.style.animationDelay=Math.random()*.45+'s';
-    b.style.animationDuration=(3.55+Math.random()*.45)+'s';
-    document.body.appendChild(b);
-    setTimeout(()=>b.remove(),4550);
+    $('beanButton').disabled = locked || complete;
+    $('beanButton').style.opacity = locked || complete ? '.65' : '1';
+    $('consumeButton').disabled = locked || !complete;
+    $('consumeButton').textContent = locked
+      ? `هدف بعدی تا ${fmtTime(remainingTime())}`
+      : complete ? '☕ قهوه صرف شد' : 'ابتدا هدف امروز را کامل کن';
   }
-  playPourSound();
-}
 
-$('beanButton').addEventListener('click',()=>{
-  if(isLocked()||targetComplete())return;
-  data.score=Math.min(goalForDay(data.day),data.score+1);
-  scatter();
-  if(targetComplete())toast('تارگت روزانه تکمیل شد! ☕');
-  save();
-  render();
-});
+  // صدای کوتاه و نرمِ برخورد دانه‌ها با سطح، با Web Audio.
+  // مرورگر ممکن است صدا را تا اولین لمس کاربر محدود کند.
+  let audioContext = null;
 
-$('consumeButton').addEventListener('click',()=>{
-  if(!targetComplete()||isLocked())return;
-  const oldLevel=levelForDay(data.day);
-  data.lastConsumeAt=now();
-  data.day+=1;
-  data.score=0;
-  save();
-  render();
-  if(levelForDay(data.day)>oldLevel)coffeeRain();
-  toast('ثبت آزمایشی انجام شد؛ تارگت بعدی ۲۴ ساعت دیگر باز می‌شود.');
-});
+  function playCoffeePourSound(duration = 4) {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
 
-document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));
-    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));
+      if (!audioContext) audioContext = new AudioCtx();
+      if (audioContext.state === 'suspended') audioContext.resume();
+
+      const ctx = audioContext;
+      const start = ctx.currentTime + 0.04;
+      const total = duration;
+
+      // چند صدای برخورد کوتاه با شدت‌های متفاوت، شبیه دانه‌های ریخته‌شده
+      for (let i = 0; i < 105; i++) {
+        const t = start + Math.random() * (total - 0.08);
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const filter = ctx.createBiquadFilter();
+
+        osc.type = Math.random() > 0.55 ? 'triangle' : 'sine';
+        osc.frequency.setValueAtTime(
+          480 + Math.random() * 1500, t
+        );
+        osc.frequency.exponentialRampToValueAtTime(
+          180 + Math.random() * 260, t + 0.035
+        );
+
+        filter.type = 'lowpass';
+        filter.frequency.value = 2600;
+
+        const volume = 0.012 + Math.random() * 0.023;
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.exponentialRampToValueAtTime(volume, t + 0.004);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.045);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.05);
+      }
+    } catch (e) {
+      // بازی حتی در صورت غیرفعال بودن صدا ادامه پیدا می‌کند.
+    }
+  }
+
+  function makeRain() {
+    const layer = $('rainLayer');
+    layer.innerHTML = '';
+
+    const colors = [
+      ['#4a2510','#a76a32','#1a0a04'],
+      ['#241006','#633518','#0d0603'],
+      ['#75451e','#c38a4a','#281307'],
+      ['#31190b','#8c5227','#130804'],
+      ['#5d3519','#d0a064','#1a0b04']
+    ];
+
+    for (let i = 0; i < 100; i++) {
+      const bean = document.createElement('div');
+      bean.className = 'rain-bean';
+
+      const palette = colors[Math.floor(Math.random() * colors.length)];
+      bean.style.left = `${Math.random() * 100}%`;
+      bean.style.width = `${11 + Math.random() * 9}px`;
+      bean.style.height = `${17 + Math.random() * 13}px`;
+      bean.style.background =
+        `radial-gradient(ellipse at 30% 20%,#fff9 0%,transparent 23%),` +
+        `linear-gradient(110deg,${palette[0]},${palette[1]} 45%,${palette[2]})`;
+      bean.style.setProperty('--drift', `${Math.random() * 100 - 50}px`);
+      bean.style.animationDelay = `${Math.random() * 1.3}s`;
+      bean.style.animationDuration = `${3.3 + Math.random() * 0.7}s`;
+      layer.appendChild(bean);
+    }
+
+    setTimeout(() => { layer.innerHTML = ''; }, 5600);
+    playCoffeePourSound(4);
+  }
+
+  function scatterParticles(button, x, y) {
+    const rect = button.getBoundingClientRect();
+    const cx = x ?? rect.width / 2;
+    const cy = y ?? rect.height / 2;
+
+    for (let i = 0; i < 7; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = `${cx}px`;
+      p.style.top = `${cy}px`;
+      p.style.setProperty('--x', `${(Math.random() - .5) * 110}px`);
+      p.style.setProperty('--y', `${(Math.random() - .5) * 100}px`);
+      button.appendChild(p);
+      setTimeout(() => p.remove(), 550);
+    }
+  }
+
+  // لمس در هر نقطه از مستطیل کار می‌کند و دانه به سمت ضربه متمایل می‌شود.
+  let tiltTimer;
+  $('beanButton').addEventListener('pointerdown', event => {
+    if (isLocked() || data.score >= goalForDay(data.day)) return;
+
+    const button = $('beanButton');
+    const rect = button.getBoundingClientRect();
+    const dx = event.clientX - (rect.left + rect.width / 2);
+    const dy = event.clientY - (rect.top + rect.height / 2);
+
+    const bean = $('mainBean');
+    let tx = 0, ty = 0, rx = 0, ry = 0;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+      tx = dx < 0 ? -3 : 3;
+      ry = dx < 0 ? -6 : 6;
+    } else {
+      ty = dy < 0 ? -3 : 3;
+      rx = dy < 0 ? 6 : -6;
+    }
+
+    bean.style.setProperty('--tx', `${tx}px`);
+    bean.style.setProperty('--ty', `${ty}px`);
+    bean.style.setProperty('--rx', `${rx}deg`);
+    bean.style.setProperty('--ry', `${ry}deg`);
+
+    clearTimeout(tiltTimer);
+    tiltTimer = setTimeout(() => {
+      bean.style.setProperty('--tx', '0px');
+      bean.style.setProperty('--ty', '0px');
+      bean.style.setProperty('--rx', '0deg');
+      bean.style.setProperty('--ry', '0deg');
+    }, 145);
+
+    scatterParticles(button, dx + rect.width / 2, dy + rect.height / 2);
+
+    data.score = Math.min(goalForDay(data.day), data.score + 1);
+    saveData();
+    render();
   });
-});
 
-$('copyInvite').addEventListener('click',async()=>{
-  try{
-    await navigator.clipboard.writeText($('inviteLink').textContent);
-    toast('لینک دعوت کپی شد');
-  }catch(e){
-    toast('کپی خودکار نشد؛ لینک را دستی کپی کن.');
+  $('consumeButton').addEventListener('click', () => {
+    if (isLocked()) {
+      showToast('برای هدف بعدی باید ۲۴ ساعت کامل بگذرد.');
+      return;
+    }
+
+    if (data.score < goalForDay(data.day)) {
+      showToast('ابتدا تارگت امروز را کامل کن.');
+      return;
+    }
+
+    const oldLevel = levelForDay(data.day);
+    data.lastConsumeAt = now();
+    data.day += 1;
+    data.score = 0;
+    saveData();
+
+    const newLevel = levelForDay(data.day);
+    render();
+
+    if (newLevel > oldLevel) {
+      makeRain();
+      showToast(`تبریک! به سطح ${fa(newLevel)} رسیدی.`);
+    } else {
+      showToast('مصرف ثبت شد؛ هدف بعدی ۲۴ ساعت دیگر باز می‌شود.');
+    }
+  });
+
+  $('inviteButton').addEventListener('click', () => {
+    const link = botUsername === 'YOUR_BOT_USERNAME'
+      ? ''
+      : `https://t.me/${botUsername}?start=ref_${telegramId}`;
+
+    $('inviteLink').value = link ||
+      'ابتدا نام کاربری ربات را در کد تنظیم کن.';
+    $('inviteModal').classList.remove('hidden');
+  });
+
+  $('copyInvite').addEventListener('click', async () => {
+    const value = $('inviteLink').value;
+    if (!value.startsWith('https://')) {
+      showToast('ابتدا نام کاربری واقعی ربات را در کد وارد کن.');
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(value);
+      showToast('لینک دعوت کپی شد.');
+    } catch (e) {
+      $('inviteLink').select();
+      showToast('لینک را انتخاب و کپی کن.');
+    }
+  });
+
+  $('closeInvite').addEventListener('click', () => {
+    $('inviteModal').classList.add('hidden');
+  });
+
+  $('saveName').addEventListener('click', () => {
+    const value = $('nameInput').value.trim();
+    if (!value) {
+      showToast('لطفاً نامت را وارد کن.');
+      return;
+    }
+    data.name = value;
+    saveData();
+    $('nameModal').classList.add('hidden');
+    render();
+    if (data.termsVersion !== TERMS_VERSION) {
+      $('termsModal').classList.remove('hidden');
+    }
+  });
+
+  $('acceptButton').addEventListener('click', () => {
+    if (!$('acceptTerms').checked) {
+      showToast('برای ادامه باید قوانین را بپذیری.');
+      return;
+    }
+    data.termsVersion = TERMS_VERSION;
+    saveData();
+    $('termsModal').classList.add('hidden');
+    render();
+  });
+
+  // اگر کاربر در همان مرورگر نامش را قبلاً ذخیره کرده باشد،
+  // فرم نام دوباره نمایش داده نمی‌شود.
+  if (!data.name) {
+    $('nameModal').classList.remove('hidden');
+  } else if (data.termsVersion !== TERMS_VERSION) {
+    $('termsModal').classList.remove('hidden');
   }
-});
 
-$('saveName').addEventListener('click',()=>{
-  const name=$('nameInput').value.trim();
-  if(!name){toast('لطفاً نام نمایشی را وارد کن.');return}
-  data.name=name;
-  save();
-  $('nameModal').classList.remove('show');
-  if(data.termsVersion!==TERMS_VERSION)$('termsModal').classList.add('show');
   render();
-});
 
-$('acceptTerms').addEventListener('change',e=>{
-  $('confirmTerms').disabled=!e.target.checked;
-});
+  timerInterval = setInterval(() => {
+    if (isLocked()) {
+      render();
+    } else if (data.lastConsumeAt) {
+      render();
+    }
+  }, 1000);
 
-$('confirmTerms').addEventListener('click',()=>{
-  if(!$('acceptTerms').checked)return;
-  data.termsVersion=TERMS_VERSION;
-  save();
-  $('termsModal').classList.remove('show');
-  toast('به باشگاه مشتریان CIP خوش آمدی');
-});
-
-if(!data.name){
-  $('nameInput').value=user?[user.first_name,user.last_name].filter(Boolean).join(' '):'';
-  $('nameModal').classList.add('show');
-}else{
-  $('nameModal').classList.remove('show');
-  if(data.termsVersion!==TERMS_VERSION)$('termsModal').classList.add('show');
-}
-
-render();
-setInterval(render,1000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) render();
+  });
 })();
 </script>
 </body>
